@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".SignUpBasicInfoFragment">
+    <TextView
+        style="@style/signUpLabelTextVIew"
+        android:layout_marginTop="32dp"/>
+    <EditText
+        android:id="@+id/signUpBasicInfoFragmentEmailEditText"
+        style="@style/signUPBigEditText"
+        android:layout_marginTop="12dp"
+        android:drawableLeft="@drawable/ic_email_36dp"
+        android:hint="@string/newID"
+        android:inputType="textEmailAddress"
+        />
+    <EditText
+        android:id="@+id/signUpBasicInfoFragmentPWEditText"
+        style="@style/signUPBigEditText"
+        android:layout_marginTop="12dp"
+        android:drawableLeft="@drawable/ic_lock_36dp"
+        android:hint="@string/newPW"
+        android:inputType="textPassword"/>
+    <EditText
+        android:id="@+id/signUpBasicInfoFragmentPWConfirmEditText"
+        style="@style/signUPBigEditText"
+        android:layout_marginTop="12dp"
+        android:drawableLeft="@drawable/ic_check_circle_no_36dp"
+        android:hint="@string/confirmPW"
+        android:inputType="textPassword"/>
+
+    <TextView
+        style="@style/signUpLabelTextVIew"
+        android:layout_marginTop="24dp"
+        android:text="@string/address"/>
+
+    <Button
+        android:id="@+id/signUpBasicInfoFragmentSearchAddressButton"
+        android:layout_marginTop="12dp"
+        style="@style/signUpAddressSearchButton"/>
+
+    <LinearLayout
+        android:layout_width="320dp"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal">
+        <EditText
+            android:id="@+id/signUpBasicInfoFragmentAddressCityProvince"
+            style="@style/signUpSmallEditText"
+            android:visibility="invisible"
+            android:gravity="center"
+            android:focusable="false"/>
+        <EditText
+            android:id="@+id/signUpBasicInfoFragmentAddressDistrict"
+            style="@style/signUpSmallEditText"
+            android:layout_marginLeft="16dp"
+            android:visibility="invisible"
+            android:gravity="center"
+            android:focusable="false"/>
+    </LinearLayout>
+    <EditText
+        android:id="@+id/signUpBasicInfoFragmentAddressDetails"
+        android:layout_marginTop="8dp"
+        android:focusable="false"
+        android:visibility="invisible"
+        android:gravity="center"
+        android:textSize="16sp"
+        style="@style/signUPBigEditText"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="320dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center">
+
+        <Button
+            android:id="@+id/signUpBasicInfoFragmentNextButton"
+            style="@style/signUpAddressSearchButton"
+            android:layout_marginBottom="24dp"
+            android:text="다 음"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

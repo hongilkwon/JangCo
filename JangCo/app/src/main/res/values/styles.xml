@@ -1,11 +1,143 @@
 <resources>
-
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="android:windowLightStatusBar">true</item>
+
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <!--actionbar 제거 toolbar 를 activity 에 맞추어 생성하여 사용-->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 
+    <!-- basic  -->
+    <style name="basicTextView" parent="@android:style/Widget.TextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">basicTextView</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="basicButton" parent="@android:style/Widget.Button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">basicButton</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <!-- login  -->
+    <style name="loginIDPWEditText" parent="Widget.AppCompat.EditText">
+        <item name="android:layout_width">240dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:hint">@string/id</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:drawablePadding">2dp</item>
+        <item name="android:imeOptions">actionGo</item>
+    </style>
+
+    <style name="loginButton" parent="basicButton">
+        <item name="android:layout_width">240dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:background">@drawable/round_out_line_2dp</item>
+        <item name="android:textColor">@color/appBasicAccentColor</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:text">Login</item>
+    </style>
+
+    <style name="loginHelp" parent="basicTextView">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">right</item>
+        <item name="android:text">@string/loginHelp</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/appBasicAccentColor</item>
+    </style>
+
+    <style name="signUp" parent="basicTextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">@string/signUp</item>
+        <item name="android:textColor">@color/appBasicColor</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <!-- signUp  -->
+
+    <!-- signUp basic info  -->
+
+    <style name="signUPBigEditText" parent="Widget.AppCompat.EditText">
+        <item name="android:layout_width">320dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:background">@drawable/round_out_line_1dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:drawablePadding">4dp</item>
+        <item name="android:padding">4dp</item>
+        <item name="android:imeOptions">actionGo</item>
+    </style>
+
+    <style name="signUpSmallEditText" parent="Widget.AppCompat.EditText">
+        <item name="android:layout_width">152dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/round_out_line_1dp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:padding">4dp</item>
+    </style>
+
+    <style name="signUpAddressSearchButton" parent="basicButton">
+        <item name="android:layout_width">320dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:background">@drawable/round_accent_color</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:text">@string/searchAddress</item>
+    </style>
+
+    <style name="signUpLabelTextVIew" parent="basicTextView">
+        <item name="android:layout_width">320dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textColor">@color/appBasicColor</item>
+        <item name="android:text">@string/emailAndPw</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <!-- signUp school grade  -->
+    <style name="searchViewEdit" parent="Widget.AppCompat.EditText">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">5</item>
+        <item name="android:background">@drawable/round_out_line_1dp</item>
+        <item name="android:paddingLeft">12dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:imeOptions">actionGo</item>
+        <item name="android:hint">@string/searchForSchoolHint</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="searchViewClickButton" parent="Widget.AppCompat.ImageButton" >
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:src">@drawable/ic_search_black_36dp</item>
+        <item name="android:background">@drawable/round_accent_color</item>
+    </style>
+
+    <style name="gradeEditText" parent="signUpSmallEditText">
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:inputType">numberDecimal</item>
+    </style>
 </resources>

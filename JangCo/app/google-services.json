@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1021413940538",
+    "firebase_url": "https://jangco-bf2f7.firebaseio.com",
+    "project_id": "jangco-bf2f7",
+    "storage_bucket": "jangco-bf2f7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1021413940538:android:a5637e2c3ba5f101348403",
+        "android_client_info": {
+          "package_name": "com.example.jangco"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1021413940538-a9rs25rnn19k45oahjqiqlu7g6v1fq4s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.jangco",
+            "certificate_hash": "335aba2e497bd53b42e2e3c528f172efcb681bc9"
+          }
+        },
+        {
+          "client_id": "1021413940538-kaeg97m4gg9lv9beo530ra19k7jh1cvi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDj0_3lVflYLI6n9ytnykQ43XVodLqUOtI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1021413940538-kaeg97m4gg9lv9beo530ra19k7jh1cvi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

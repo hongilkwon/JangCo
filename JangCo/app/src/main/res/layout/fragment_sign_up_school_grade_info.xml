@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".SignUpSchoolGradeInfoFragment">
+    <TextView
+        android:layout_marginTop="32dp"
+        style="@style/signUpLabelTextVIew"
+        android:text="@string/searchLabel"/>
+
+    <LinearLayout
+        android:layout_marginTop="12dp"
+        android:layout_width="320dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+        <EditText
+            android:id="@+id/signUpSchoolGradeInfoSearchEditText"
+            style="@style/searchViewEdit"/>
+        <ImageButton
+            android:id="@+id/signUpSchoolGradeInfoSearchButton"
+            style="@style/searchViewClickButton"/>
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="320dp"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/signUpSchoolGradeInfoRecyclerView"
+            android:layout_width="320dp"
+            android:layout_height="match_parent"
+            android:paddingBottom="8dp"
+            android:visibility="gone"
+            android:background="@color/colorWhite"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/signUpGradeInfoSchoolNameTextView"
+                android:layout_marginTop="16dp"
+                style="@style/signUPBigEditText"
+                android:drawablePadding="6dp"
+                android:visibility="invisible"
+                android:drawableLeft="@drawable/ic_school_36dp"
+                />
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:layout_marginTop="16dp"
+                android:id="@+id/signUpSchoolGradeInfoMajorSelectSpinner"
+                android:layout_width="320dp"
+                android:layout_height="36dp"
+                android:layout_gravity="center"
+                android:visibility="invisible"
+                android:dropDownWidth="320dp"
+                android:background="@drawable/round_out_line_1dp"/>
+        </LinearLayout>
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/signUpSchoolGradeInfoGradeLayout"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="32dp"
+        android:visibility="gone"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/signUpLabelTextVIew"
+            android:text="@string/totalGradeLabel"/>
+
+        <LinearLayout
+            android:layout_marginTop="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/signUpSchoolGradeInfoTotalAverage"
+                style="@style/gradeEditText"
+                android:drawableLeft="@mipmap/ic_average"
+                android:hint="@string/averageHint"/>
+            <EditText
+                android:id="@+id/signUpSchoolGradeInfoTotalPercentage"
+                style="@style/gradeEditText"
+                android:drawableLeft="@mipmap/ic_percentage"
+                android:hint="@string/percentageHint"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_marginTop="16dp"
+            style="@style/signUpLabelTextVIew"
+            android:text="@string/lastGradeLabel"/>
+
+        <LinearLayout
+            android:layout_marginTop="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/signUpSchoolGradeInfoLastAverage"
+                style="@style/gradeEditText"
+                android:drawableLeft="@mipmap/ic_average"
+                android:hint="@string/averageHint" />
+            <EditText
+                android:id="@+id/signUpSchoolGradeInfoLastPercentage"
+                style="@style/gradeEditText"
+                android:drawableLeft="@mipmap/ic_percentage"
+                android:hint="@string/percentageHint"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="320dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center">
+        <Button
+            android:id="@+id/signUpSchoolGradeInfoComplete"
+            style="@style/signUpAddressSearchButton"
+            android:layout_marginBottom="24dp"
+            android:text="완 료"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>
