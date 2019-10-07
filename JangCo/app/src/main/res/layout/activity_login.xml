@@ -69,6 +69,7 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/loginActivityLoginButton"
         android:layout_marginTop="8dp"
         style="@style/loginButton"/>
 

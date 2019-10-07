@@ -198,11 +198,10 @@ class SignUpSchoolGradeInfoFragment : Fragment(), View.OnClickListener {
         when(v?.id){
             R.id.signUpSchoolGradeInfoComplete ->{
                 if(inspectionSchoolGradeIfo()){
-                    createSIgnUpDialog()?.show()
-                    // realm 객체 3개 저장(userInfo, address, grade, school)
-                    // fireBase에 id pw 저장.(userInfo)
-                    // LoginActivity로 돌아감.
-                    // signUpActivity?.finish() --> 다이얼로그 이벤트 리스너에서 구현.
+
+                    // realm 객체 2개 저장( school,grade)
+                    signUpActivity?.createAccount()
+
                 }else{
 
                 }
@@ -210,31 +209,6 @@ class SignUpSchoolGradeInfoFragment : Fragment(), View.OnClickListener {
             }
 
         }
-    }
-    // 추가적인 정보의 입력이 필요하다는 다이얼로그.
-    fun createSIgnUpDialog(): AlertDialog.Builder? {
-        //다이얼로그 생성.
-        var dialogBuilder = context?.let { AlertDialog.Builder(it) }
-        var title = signUpActivity?.getString(R.string.signUpCompleteDialogTitle)
-        var message = signUpActivity?.getString(R.string.signUpCompleteMessage)
-        dialogBuilder?.setTitle(title)
-        dialogBuilder?.setMessage(message)
-        dialogBuilder?.setIcon(R.drawable.scholarship)
-        dialogBuilder?.setPositiveButtonIcon(signUpActivity?.getDrawable(R.drawable.ic_check_24dp))
-        // 다이얼로그 리스너.
-        var dialogListener = object: DialogInterface.OnClickListener{
-            override fun onClick(dialog: DialogInterface?, which: Int) {
-                when(which){
-                    DialogInterface.BUTTON_POSITIVE ->{
-                        //Toast.makeText(context,"yes",Toast.LENGTH_SHORT).show()
-                    }
-
-                }
-            }
-        }
-        dialogBuilder?.setPositiveButton("",dialogListener)
-
-        return dialogBuilder
     }
     //소프트 키보드 강제로 내리기.
     fun closeKeyboard(){

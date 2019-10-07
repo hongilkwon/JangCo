@@ -14,6 +14,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_login)
 
         loginActivitySignUpTextView.setOnClickListener(this)
+        loginActivityLoginButton.setOnClickListener(this)
     }
 
 
@@ -23,6 +24,11 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
             R.id.loginActivitySignUpTextView -> {
                 var intent = Intent(this, SignUpActivity::class.java)
                 startActivity(intent)
+            }
+            R.id.loginActivityLoginButton -> {
+                var intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+
             }
         }
     }

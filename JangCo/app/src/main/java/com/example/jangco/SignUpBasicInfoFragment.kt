@@ -122,6 +122,11 @@ class SignUpBasicInfoFragment : Fragment(), View.OnClickListener, TextView.OnEdi
             }
             R.id.signUpBasicInfoFragmentNextButton -> {
                 if(inspectionBasicInfo()){
+                    // 유저정보 객체생성
+                    signUpActivity?.userInfo = UserInfo(userEmail?.text.toString().trim().replace(" ","")
+                    , userPw?.text.toString().trim().replace(" ",""))
+                    // 주소정보 객체
+
                     signUpActivity?.settingFragment(signUpActivity!!.SIGNUP_SCHOOL_GRADE_INFO)
                 }
             }

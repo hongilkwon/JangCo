@@ -1,5 +1,6 @@
 package com.example.jangco
 
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,6 +8,8 @@ import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_sign_up.*
 
 
@@ -24,12 +27,19 @@ class SignUpActivity : AppCompatActivity() {
     var signUpBasicInfoFragment = SignUpBasicInfoFragment()
     var signUpSchoolGradeInfoFragment = SignUpSchoolGradeInfoFragment()
 
+
+    var userInfo: UserInfo? = null
+
+
+    private lateinit var auth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
         settingToolBar()
         settingFragment(SIGNUP_BASIC_INFO)
         readSchoolData()
+        auth = FirebaseAuth.getInstance()
     }
 
     fun settingFragment(fragmentCode: Int) {
@@ -54,12 +64,9 @@ class SignUpActivity : AppCompatActivity() {
         schoolDataKeys = schoolData.keys.toMutableSet()
         var tempList = schoolDataKeys?.sorted()
         schoolDataKeys =tempList?.toSortedSet()
-
-
         //자동 검색 결과 sort schoolDataKeys?.toSortedSet()
         //Toast.makeText(this,"readSchoolData Load Complete \n ${schoolDataKeys!!.size}개의 대학" ,Toast.LENGTH_LONG).show()
         //Log.d("readSchoolData", schoolDataKeys!!.elementAt(1861))
-
     }
 
     private fun settingToolBar(){
@@ -86,6 +93,55 @@ class SignUpActivity : AppCompatActivity() {
         startActivityForResult(i, SEARCH_ADDRESS_ACTIVITY)
     }
 
+    fun createAccount(){
+        val email = userInfo?.email
+        val password = userInfo?.pw
+
+        if (email != null && password != null) {
+            auth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this) { task ->
+                    if (task.isSuccessful) {
+                        // Sign in success, update UI with the signed-in user's information
+                        Log.d("createAccount", "createUserWithEmail:success")
+                        createSIgnUpDialog()?.show()
+                    } else {
+                        // If sign in fails, display a message to the user.
+                        Log.w("createAccount", "createUserWithEmail:failure", task.exception)
+                        Toast.makeText(baseContext, "Authentication failed.",
+                            Toast.LENGTH_SHORT).show()
+                    }
+
+                    // ...
+                }
+        }
+
+
+    }    // 추가적인 정보의 입력이 필요하다는 다이얼로그.
+    fun createSIgnUpDialog(): AlertDialog.Builder? {
+        //다이얼로그 생성.
+        var dialogBuilder = this?.let { AlertDialog.Builder(it) }
+        var title = getString(R.string.signUpCompleteDialogTitle)
+        var message = getString(R.string.signUpCompleteMessage)
+        dialogBuilder?.setTitle(title)
+        dialogBuilder?.setMessage(message)
+        dialogBuilder?.setIcon(R.drawable.scholarship)
+        dialogBuilder?.setCancelable(false)
+        dialogBuilder?.setPositiveButtonIcon(getDrawable(R.drawable.ic_check_24dp))
+        // 다이얼로그 리스너.
+        var dialogListener = object: DialogInterface.OnClickListener{
+            override fun onClick(dialog: DialogInterface?, which: Int) {
+                when(which){
+                    DialogInterface.BUTTON_POSITIVE ->{
+                        finish()
+                    }
+
+                }
+            }
+        }
+        dialogBuilder?.setPositiveButton("",dialogListener)
+
+        return dialogBuilder
+    }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
