@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MoreInfoFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layerType="software"
+        android:background="@drawable/rectangle_bottom_dash_out_line_1dp"
+        android:padding="12dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_weight="3"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/colorBlack"
+                android:textSize="14sp"
+                android:text="@string/moreInfoFragmentExample"/>
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical"
+                android:src="@mipmap/ic_launcher_round"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                style="@style/moreInfoFragmentMainMenuLayout">
+                <ImageView
+                    android:id="@+id/moreInfoFragmentMyInfo"
+                    style="@style/moreInfoFragmentMainMenuImage"
+                    android:src="@drawable/user"/>
+                <TextView
+                    style="@style/moreInfoFragmentMainMenuText"
+                    android:text="@string/moreInfoFragmentMyInfo"/>
+            </LinearLayout>
+            <LinearLayout
+                style="@style/moreInfoFragmentMainMenuLayout">
+                <ImageView
+                    style="@style/moreInfoFragmentMainMenuImage"
+                    android:src="@drawable/mortarboard"/>
+                <TextView
+                    style="@style/moreInfoFragmentMainMenuText"
+                    android:text="@string/moreInfoFragmentScholarshipRecord"/>
+            </LinearLayout>
+            <LinearLayout
+                style="@style/moreInfoFragmentMainMenuLayout">
+                <ImageView
+                    style="@style/moreInfoFragmentMainMenuImage"
+                    android:src="@drawable/heart"/>
+                <TextView
+                    style="@style/moreInfoFragmentMainMenuText"
+                    android:text="@string/moreInfoFragmentMyScholarship"/>
+            </LinearLayout>
+            <LinearLayout
+                style="@style/moreInfoFragmentMainMenuLayout">
+                <ImageView
+                    style="@style/moreInfoFragmentMainMenuImage"
+                    android:src="@drawable/point"/>
+                <TextView
+                    style="@style/moreInfoFragmentMainMenuText"
+                    android:text="@string/moreInfoFragmentPoint"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="16dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/moreInfoFragmentNoticeTextView"
+            style="@style/moreInfoFragmentListMenuText"
+            android:drawableLeft="@drawable/ic_alarm"
+            android:text="@string/moreInfoFragmentNotice"/>
+        <TextView
+            android:id="@+id/moreInfoFragmentEventTextView"
+            style="@style/moreInfoFragmentListMenuText"
+            android:drawableLeft="@drawable/ic_star"
+            android:text="@string/moreInfoFragmentEvent"/>
+        <TextView
+            android:id="@+id/moreInfoFragmentGuideTextView"
+            style="@style/moreInfoFragmentListMenuText"
+            android:drawableLeft="@drawable/ic_compass"
+            android:text="@string/moreInfoFragmentGuide"/>
+        <TextView
+            android:id="@+id/moreInfoFragmentPersonalQuestionTextView"
+            style="@style/moreInfoFragmentListMenuText"
+            android:drawableLeft="@drawable/ic_mail"
+            android:text="@string/moreInfoFragmentPersonalQuestion"/>
+        <TextView
+            android:id="@+id/moreInfoFragmentSettingTextView"
+            style="@style/moreInfoFragmentListMenuText"
+            android:drawableLeft="@drawable/ic_settings"
+            android:text="@string/moreInfoFragmentPreferences"/>
+        <TextView
+            android:id="@+id/moreInfoFragmentShareAppTextView"
+            style="@style/moreInfoFragmentListMenuText"
+            android:drawableLeft="@drawable/ic_user"
+            android:text="@string/moreInfoFragmentShareApp"/>
+        <TextView
+            style="@style/moreInfoFragmentListMenuText"
+            android:text="@string/moreInfoFragmentJangCo"/>
+
+    </LinearLayout>
+
+</LinearLayout>

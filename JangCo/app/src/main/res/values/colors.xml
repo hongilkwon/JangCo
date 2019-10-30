@@ -4,9 +4,16 @@
     <color name="colorPrimaryDark">#ffffff</color>
     <color name="colorAccent">#a9f2bc</color>
 
-    <color name="appBasicColor">#1c913b</color>
-    <color name="appBasicAccentColor">#a9f2bc</color>
+    <color name="appAccentColor">#06572A</color>
+    <color name="appMainColor">#79CF9F</color>
+    <color name="appBaseColor">#3BB26F</color>
+    <color name="appSpecialColor">#43CA7E</color>
+
     <color name="colorWhite">#ffffff</color>
     <color name="colorBlack">#ff000000</color>
+    <color name="colorLightBlack">#4A4E4E</color>
+    <color name="colorGray">#828786</color>
+    <color name="colorLightGray">#EEE8E8</color>
     <color name="colorRed">#F1756C</color>
+
 </resources>

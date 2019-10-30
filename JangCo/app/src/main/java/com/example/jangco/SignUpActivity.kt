@@ -27,8 +27,12 @@ class SignUpActivity : AppCompatActivity() {
     var signUpBasicInfoFragment = SignUpBasicInfoFragment()
     var signUpSchoolGradeInfoFragment = SignUpSchoolGradeInfoFragment()
 
-
-    var userInfo: UserInfo? = null
+    // 회원정보에 필요한 Data클래스
+    var newAccount: NewAccount? = null
+    var user: User? = null
+    var address: Address? = null
+    var school: School? = null
+    var grade: Grade? = null
 
 
     private lateinit var auth: FirebaseAuth
@@ -81,7 +85,7 @@ class SignUpActivity : AppCompatActivity() {
         var toolbar = layoutInflater.inflate(R.layout.activity_sign_up_toolbar, null)
         supportActionBar?.customView = toolbar
 
-        var backButton = toolbar.findViewById<ImageView>(R.id.toolbarBackImageView)
+        var backButton = toolbar.findViewById<ImageView>(R.id.noticeBoardToolbarBackImageView)
         backButton.setOnClickListener{ view ->
             finish()
         }
@@ -94,14 +98,18 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     fun createAccount(){
-        val email = userInfo?.email
-        val password = userInfo?.pw
+        val email = newAccount?.email
+        val password = newAccount?.pw
 
         if (email != null && password != null) {
             auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information
+                        var nickName = email.split("@")[0]
+
+                        user = User(email, nickName)
+                        DataBaseHelper.registerNewUserData(user!!, address!!, school!!, grade!!)
                         Log.d("createAccount", "createUserWithEmail:success")
                         createSIgnUpDialog()?.show()
                     } else {

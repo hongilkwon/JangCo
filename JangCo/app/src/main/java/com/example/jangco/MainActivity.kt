@@ -3,29 +3,36 @@ package com.example.jangco
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.Toolbar
-import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_sign_up.*
 
 class MainActivity : AppCompatActivity() {
 
 
+    private lateinit var auth: FirebaseAuth
+    lateinit var currentUser: FirebaseUser
+
     val HOME_FRAGMENT: Int = 1
     val SCHOLARSHIP_FRAGMENT: Int = 2
     val MY_SCHOLARSHIP_FRAGMENT: Int = 3
-    val MY_INFO_FRAGMENT: Int = 4
+    val MORE_INFO_FRAGMENT: Int = 4
 
     private var fragmentManager = supportFragmentManager
     var homeFragment = HomeFragment()
     var scholarshipFragment = ScholarshipFragment()
     var myScholarshipFragment = MyScholarshipFragment()
-    var myInfoFragment = MyInfoFragment()
+    var moreInfoFragment = MoreInfoFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        //인증 객체 받아오기.
+        auth = FirebaseAuth.getInstance()
+        currentUser = auth.currentUser!!
+
         // 첫 프레그먼트 설정.
         settingFragment(HOME_FRAGMENT)
         settingToolbar(HOME_FRAGMENT)
@@ -45,13 +52,19 @@ class MainActivity : AppCompatActivity() {
                         settingToolbar(MY_SCHOLARSHIP_FRAGMENT)
                     }
                     R.id.mMyInfo -> {
-                        settingFragment(MY_INFO_FRAGMENT)
-                        settingToolbar(MY_INFO_FRAGMENT)
+                        settingFragment(MORE_INFO_FRAGMENT)
+                        settingToolbar(MORE_INFO_FRAGMENT)
                     }
                 }
                 return true
             }
         })
+    }
+
+    public override fun onStart() {
+        super.onStart()
+        // Check if user is signed in (non-null) and update UI accordingly.
+        val currentUser = auth.currentUser
     }
 
 
@@ -67,9 +80,9 @@ class MainActivity : AppCompatActivity() {
             MY_SCHOLARSHIP_FRAGMENT -> {
                 tran.replace(R.id.mainActivityFrameLayout, myScholarshipFragment)
             }
-            MY_INFO_FRAGMENT -> {
+            MORE_INFO_FRAGMENT -> {
 
-                tran.replace(R.id.mainActivityFrameLayout, myInfoFragment)
+                tran.replace(R.id.mainActivityFrameLayout, moreInfoFragment)
             }
         }
         tran.commit()
@@ -97,8 +110,8 @@ class MainActivity : AppCompatActivity() {
                var toolbar = layoutInflater.inflate(R.layout.fragment_my_scholarship_toolbar, null)
                 mainActivityToolbar.addView(toolbar)
             }
-            MY_INFO_FRAGMENT -> {
-               var toolbar = layoutInflater.inflate(R.layout.fragment_my_info_toolbar, null)
+            MORE_INFO_FRAGMENT -> {
+               var toolbar = layoutInflater.inflate(R.layout.fragment_more_info_toolbar, null)
                 mainActivityToolbar.addView(toolbar)
             }
         }

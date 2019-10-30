@@ -28,6 +28,7 @@
         <item name="android:textSize">14sp</item>
     </style>
 
+
     <!-- login  -->
     <style name="loginIDPWEditText" parent="Widget.AppCompat.EditText">
         <item name="android:layout_width">240dp</item>
@@ -45,7 +46,7 @@
         <item name="android:layout_height">50dp</item>
         <item name="android:layout_gravity">center</item>
         <item name="android:background">@drawable/round_out_line_2dp</item>
-        <item name="android:textColor">@color/appBasicAccentColor</item>
+        <item name="android:textColor">@color/appMainColor</item>
         <item name="android:textSize">18sp</item>
         <item name="android:text">Login</item>
     </style>
@@ -55,14 +56,14 @@
         <item name="android:gravity">right</item>
         <item name="android:text">@string/loginHelp</item>
         <item name="android:textSize">12sp</item>
-        <item name="android:textColor">@color/appBasicAccentColor</item>
+        <item name="android:textColor">@color/appMainColor</item>
     </style>
 
     <style name="signUp" parent="basicTextView">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:text">@string/signUp</item>
-        <item name="android:textColor">@color/appBasicColor</item>
+        <item name="android:textColor">@color/appAccentColor</item>
         <item name="android:textSize">12sp</item>
     </style>
 
@@ -105,7 +106,7 @@
         <item name="android:layout_width">320dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_gravity">center</item>
-        <item name="android:textColor">@color/appBasicColor</item>
+        <item name="android:textColor">@color/appAccentColor</item>
         <item name="android:text">@string/emailAndPw</item>
         <item name="android:textSize">18sp</item>
     </style>
@@ -140,4 +141,39 @@
         <item name="android:textSize">14sp</item>
         <item name="android:inputType">numberDecimal</item>
     </style>
+
+    <!-- more info fragment  -->
+    <style name="moreInfoFragmentMainMenuLayout" >
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="moreInfoFragmentMainMenuImage">
+        <item name="android:layout_width">45dp</item>
+        <item name="android:layout_height">45dp</item>
+    </style>
+
+    <style name="moreInfoFragmentMainMenuText">
+        <item name="android:layout_width">50dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="moreInfoFragmentListMenuText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:background">@drawable/rectangle_bottom_out_line_gray_1dp</item>
+        <item name="android:drawablePadding">12dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/colorBlack</item>
+    </style>
+
+
 </resources>

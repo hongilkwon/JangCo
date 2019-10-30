@@ -14,8 +14,6 @@ import kotlinx.android.synthetic.main.school_list_item.view.*
 class SchoolRecyclerViewAdapter(private var schoolNameData : MutableSet<String>, var context : Context?) :
     RecyclerView.Adapter<SchoolRecyclerViewAdapter.ItemViewHolder>(){
 
-    private val TYPE_HEADER = 0
-    private val TYPE_ITEM = 1
     private var copyKeysSet: MutableSet<String>? = null
 
     init {
@@ -59,7 +57,6 @@ class SchoolRecyclerViewAdapter(private var schoolNameData : MutableSet<String>,
                 schoolNameData.add(item)
             }
         }
-
     }
 
     inner class ItemViewHolder(var view: View) : RecyclerView.ViewHolder(view){

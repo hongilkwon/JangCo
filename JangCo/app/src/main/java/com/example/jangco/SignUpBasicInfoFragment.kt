@@ -3,7 +3,6 @@ package com.example.jangco
 
 import android.os.Bundle
 import android.text.Editable
-import android.util.Log
 import android.view.KeyEvent
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -16,12 +15,10 @@ import android.widget.Toast
 import java.util.regex.Pattern
 
 
-/**
- * A simple [Fragment] subclass.
- */
 class SignUpBasicInfoFragment : Fragment(), View.OnClickListener, TextView.OnEditorActionListener {
 
     var signUpActivity: SignUpActivity? = null
+
     var userEmail: EditText? = null
     var userPw: EditText? = null
     var userConfirmPw: EditText? = null
@@ -123,10 +120,10 @@ class SignUpBasicInfoFragment : Fragment(), View.OnClickListener, TextView.OnEdi
             R.id.signUpBasicInfoFragmentNextButton -> {
                 if(inspectionBasicInfo()){
                     // 유저정보 객체생성
-                    signUpActivity?.userInfo = UserInfo(userEmail?.text.toString().trim().replace(" ","")
+                    signUpActivity?.newAccount = NewAccount(userEmail?.text.toString().trim().replace(" ","")
                     , userPw?.text.toString().trim().replace(" ",""))
-                    // 주소정보 객체
-
+                    // 주소정보 객체 생성
+                    signUpActivity?.address = Address(cityProvince?.text.toString(), district?.text.toString())
                     signUpActivity?.settingFragment(signUpActivity!!.SIGNUP_SCHOOL_GRADE_INFO)
                 }
             }

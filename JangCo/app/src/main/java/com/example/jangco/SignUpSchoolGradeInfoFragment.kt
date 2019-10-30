@@ -119,7 +119,6 @@ class SignUpSchoolGradeInfoFragment : Fragment(), View.OnClickListener {
         signUpCompleteButton = view.findViewById(R.id.signUpSchoolGradeInfoComplete)
         signUpCompleteButton?.setOnClickListener(this)
 
-
         return view
     }
 
@@ -199,7 +198,19 @@ class SignUpSchoolGradeInfoFragment : Fragment(), View.OnClickListener {
             R.id.signUpSchoolGradeInfoComplete ->{
                 if(inspectionSchoolGradeIfo()){
 
-                    // realm 객체 2개 저장( school,grade)
+                    // 학교 객체 생성
+                    var schoolName = schoolName?.text.toString()
+                    var major =  majorSelectSpinner?.selectedItem.toString().split(" ")
+
+                    signUpActivity?.school =  School(schoolName ,major[0], major[1])
+
+                    // 성적 객체 생성
+                    var totalAverage = signUpSchoolGradeTotalAverage?.text.toString().toDouble()
+                    var totalPercentage = signUpSchoolGradeTotalPercentage?.text.toString().toLong()
+                    var lastAverage = signUpSchoolGradeLastAverage?.text.toString().toDouble()
+                    var lastPercentage = signUpSchoolGradeLastPercentage?.text.toString().toLong()
+                    signUpActivity?.grade =  Grade(totalAverage, totalPercentage, lastAverage, lastPercentage)
+
                     signUpActivity?.createAccount()
 
                 }else{
