@@ -7,7 +7,7 @@
     <string name="login">로그인</string>
     <string name="autoLogin">자동로그인</string>
     <string name="signUp">회원가입</string>
-    <string name="signUpComment">아직 회원이 아니신가요?</string>
+    <string name="signUpComment">아직 다바다 회원이 아니신가요?</string>
     <string name="loginHelp">도움이 필요하신가요?</string>
     <string name="loginFail">"Email 또는 Pw가 정확하지 않습니다."</string>
     <string name="loginEmptyEmailPw">Email 또는 Pw를 입력하지 않았습니다.</string>

@@ -115,6 +115,8 @@ class ScholarshipRecyclerViewAdapter(option: FirestoreRecyclerOptions<ScholarShi
                 dataBaseHelper.updateBookmark(userProfile.bookMarkMap!!)
             }
 
+            Log.d("test","$model")
+
         }
     }
 }
