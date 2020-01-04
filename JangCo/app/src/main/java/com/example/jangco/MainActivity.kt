@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
     var myScholarShipList: ArrayList<ScholarShip>? = null
 
     var allScholarShipList: ArrayList<ScholarShip>? = null
-
+    var fitScholarShipList: ArrayList<ScholarShip>? = ArrayList()
     // 유저의 데이터 객체들.
     var userAllInfo: HashMap<String, Any>? = null
 
@@ -107,6 +107,7 @@ class MainActivity : AppCompatActivity() {
             myScholarShipList = dataBaseHelper.getMyScholarShipList(myScholarShipMap!!)
 
             allScholarShipList = dataBaseHelper.getAllScholarShipList()
+            fitScholarShipList?.addAll(allScholarShipList!!)
             // 코루틴 종료전에 프로그레스 다이얼로그 삭제.
             loadingDialog.dismiss()
         }

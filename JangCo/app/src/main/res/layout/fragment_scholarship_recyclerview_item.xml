@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="6dp"
+    android:layout_margin="12dp"
     app:cardCornerRadius="20dp">
 
    <LinearLayout
@@ -83,6 +83,7 @@
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
                    android:layout_marginEnd="4dp"
+                   android:textSize="13sp"
                    android:text="#성적기준" />
 
                <TextView
@@ -90,6 +91,7 @@
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
                    android:layout_marginEnd="4dp"
+                   android:textSize="13sp"
                    android:text="#지역기준" />
 
                <TextView
@@ -97,12 +99,14 @@
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
                    android:layout_marginEnd="4dp"
+                   android:textSize="13sp"
                    android:text="#특수기준" />
 
                <TextView
                    android:id="@+id/scholarIncomeTag"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
+                   android:textSize="13sp"
                    android:text="#소득기준" />
            </LinearLayout>
 

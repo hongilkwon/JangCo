@@ -87,19 +87,19 @@ class ScholarshipRecyclerViewAdapter(
             scholarEndDate.text = sdf.format(endDate)
 
             if(model.tagList?.get(0) == true) {
-                scholarGradeTag.setTextColor(context.resources.getColor(R.color.colorBlack))
+                scholarGradeTag.setTextColor(context.resources.getColor(R.color.colorPastelPink))
                 scholarGradeTag.typeface = Typeface.DEFAULT_BOLD
             }
             if(model.tagList?.get(1) == true) {
-                scholarLocalTag.setTextColor(context.resources.getColor(R.color.colorBlack))
+                scholarLocalTag.setTextColor(context.resources.getColor(R.color.colorPastelPurple))
                 scholarLocalTag.typeface = Typeface.DEFAULT_BOLD
             }
             if(model.tagList?.get(2) == true) {
-                scholarSpecialTag.setTextColor(context.resources.getColor(R.color.colorBlack))
+                scholarSpecialTag.setTextColor(context.resources.getColor(R.color.colorPastelBlue))
                 scholarSpecialTag.typeface = Typeface.DEFAULT_BOLD
             }
             if(model.tagList?.get(3) == true) {
-                scholarIncomeTag.setTextColor(context.resources.getColor(R.color.colorBlack))
+                scholarIncomeTag.setTextColor(context.resources.getColor(R.color.appMainColor))
                 scholarIncomeTag.typeface = Typeface.DEFAULT_BOLD
             }
 

@@ -35,9 +35,10 @@
     <string name="searchForSchoolHint"> ex) 국민대학교</string>
     <string name="searchForSchoolHeaderMajor">전 공</string>
     <string name="searchForSchoolHeaderLine">계 열</string>
-    <string name="searchForSchoolAttending">재학생</string>
-    <string name="searchForSchoolAbsence">휴학생</string>
-    <string name="searchForSchoolGraduated">졸업생</string>
+
+    <string name="searchForSchoolAttending">재학</string>
+    <string name="searchForSchoolAbsence">휴학</string>
+    <string name="searchForSchoolGraduated">졸업</string>
 
     <string name="gradeInfoLabel">Grade Info</string>
     <string name="MajorSpinnerTitle">학과를 선택하세요</string>

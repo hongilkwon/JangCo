@@ -39,6 +39,10 @@ class ScholarshipFragment : Fragment() {
         recyclerView = view.findViewById(R.id.scholarshipFragmentRecyclerView)
         setUpRecyclerView()
 
+        Log.d("test", mainActivity?.fitScholarShipList!!.toString())
+        Filter(mainActivity?.userAllInfo!!, mainActivity?.fitScholarShipList!!).compareSQualificationInfo()
+        Log.d("test", mainActivity?.fitScholarShipList!!.toString())
+
         return view
     }
 
@@ -46,12 +50,9 @@ class ScholarshipFragment : Fragment() {
 
         Log.d("test", mainActivity?.userProfile.toString())
         adapter = ScholarshipRecyclerViewAdapter(
-             context!!, mainActivity?.userProfile!!, mainActivity?.allScholarShipList!!, mainActivity?.myScholarShipList!!)
+             context!!, mainActivity?.userProfile!!, mainActivity?.fitScholarShipList!!, mainActivity?.myScholarShipList!!)
         recyclerView?.adapter = adapter
     }
-
-
-
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
