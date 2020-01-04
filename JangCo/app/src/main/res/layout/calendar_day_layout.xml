@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/calendarDayText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|start"
+        android:paddingStart="3dp"
+        android:paddingEnd="3dp"
+        android:textColor="@android:color/black"
+        android:textSize="12sp"
+        tools:text="24"/>
+
+    <TextView
+        android:id="@+id/scheduleText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="1dp"
+        android:paddingEnd="1dp"
+        android:textSize="8sp" />
+
+    <TextView
+        android:id="@+id/scheduleText2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="1dp"
+        android:paddingEnd="1dp"
+        android:textSize="8sp" />
+
+    <TextView
+        android:id="@+id/scheduleLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/calendar_day_label"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_margin="3dp"
+        android:text="+2"
+        android:textSize="8sp"
+        android:visibility="gone"/>
+
+</LinearLayout>

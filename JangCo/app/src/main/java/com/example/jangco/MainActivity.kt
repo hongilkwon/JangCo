@@ -18,9 +18,6 @@ import com.example.jangco.Address as Address
 
 class MainActivity : AppCompatActivity() {
 
-
-
-
     // 서버연동을 위한 Firebase 관련 객체.
     private lateinit var auth: FirebaseAuth
     lateinit var currentUser: FirebaseUser

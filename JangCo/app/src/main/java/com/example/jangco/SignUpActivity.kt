@@ -34,7 +34,7 @@ class SignUpActivity : AppCompatActivity() {
     var school: School? = null
     var grade: Grade? = null
     var income: Income? = Income()
-    var squalification: SQualification? = SQualification()
+    var sQualification: SQualification? = SQualification()
 
 
     private lateinit var auth: FirebaseAuth
@@ -111,7 +111,7 @@ class SignUpActivity : AppCompatActivity() {
                         var nickName = email.split("@")[0]
 
                         user = User(email, nickName)
-                        DataBaseHelper.registerNewUserData(user!!, address!!, school!!, grade!!,income!!, squalification!!)
+                        DataBaseHelper.registerNewUserData(user!!, address!!, school!!, grade!!,income!!, sQualification!!)
                         Log.d("createAccount", "createUserWithEmail:success")
                         createSIgnUpDialog()?.show()
                     } else {

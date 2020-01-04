@@ -75,7 +75,6 @@ class ChangeIncomeActivity : AppCompatActivity(), View.OnClickListener, TextWatc
                     setResult(RESULT_OK, intent)
                     loadingDialog.dismiss()
                     finish()
-
                 }
             }
         }

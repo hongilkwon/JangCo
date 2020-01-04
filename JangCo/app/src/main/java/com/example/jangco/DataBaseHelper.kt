@@ -20,14 +20,14 @@ class DataBaseHelper(val id: String, val fireStore: FirebaseFirestore = Firebase
         @SuppressLint("StaticFieldLeak")
         val fireStore = FirebaseFirestore.getInstance()
 
-        @JvmStatic fun registerNewUserData(user: User, address :Address, school: School, grade: Grade, income: Income, squalification: SQualification){
+        @JvmStatic fun registerNewUserData(user: User, address :Address, school: School, grade: Grade, income: Income, sQualification: SQualification){
             fireStore.collection("User").document(user.id!!).set(user)
             var userInfoRef = fireStore.collection("User").document(user.id).collection("UserInfo")
             userInfoRef.document("address").set(address)
             userInfoRef.document("school").set(school)
             userInfoRef.document("grade").set(grade)
             userInfoRef.document("income").set(income)
-            userInfoRef.document("squalification").set(squalification)
+            userInfoRef.document("squalification").set(sQualification)
         }
     }
 
@@ -38,7 +38,7 @@ class DataBaseHelper(val id: String, val fireStore: FirebaseFirestore = Firebase
     val schoolDocumentRef = userInfoCollectionRef.document("school")
     val gradeDocumentRef = userInfoCollectionRef.document("grade")
     val incomeDoucumentRef = userInfoCollectionRef.document("income")
-    val sQualificationDoucumentRef  = userInfoCollectionRef.document("sQualification")
+    val sQualificationDoucumentRef  = userInfoCollectionRef.document("squalification")
 
 
 
@@ -74,11 +74,11 @@ class DataBaseHelper(val id: String, val fireStore: FirebaseFirestore = Firebase
                 }
                 "income" -> {
                     val income = document.toObject(Income::class.java)
-                    allUserInfo.put(  "income", income)
+                    allUserInfo.put( "income", income)
                 }
-                "sQualification" -> {
+                "squalification" -> {
                     val sQualification = document.toObject(SQualification::class.java)
-                    allUserInfo.put(   "sQualification", sQualification)
+                    allUserInfo.put( "sQualification", sQualification)
                 }
             }
         }

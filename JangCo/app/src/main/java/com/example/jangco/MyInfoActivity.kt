@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -56,6 +57,8 @@ class MyInfoActivity : AppCompatActivity(), View.OnClickListener {
             if (obj is SQualification) {
                 userSQualification = obj
             }
+            Log.d("test",userGrade.toString())
+            Log.d("test",userSQualification.toString())
         }
         settingUserInfo()
 
@@ -120,6 +123,7 @@ class MyInfoActivity : AppCompatActivity(), View.OnClickListener {
                 var intent = Intent(baseContext, ChangeSQualificationActivity::class.java)
                 intent.putExtra("userSQualification", userSQualification)
                 startActivityForResult(intent,CHANGE_SQUALIFICATION_ACTIVITY)
+
             }
         }
     }

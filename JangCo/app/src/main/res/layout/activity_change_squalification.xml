@@ -1,22 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ChangeSQualificationActivity">
 
-
-
-
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/changeSQualificationActivityToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorWhite"
-        android:minHeight="?attr/actionBarSize"
         android:elevation="2dp"
+        android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme" />
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:layout_marginBottom="50dp">
 
-</LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="36dp">
+
+            <CheckBox
+                android:id="@+id/changeSQualificationActivityOfficialCheckBox"
+                style="@style/check_type_mainColor_checkBox"
+                android:text="@string/changeSQualificationActivityOfficialLabel" />
+
+            <CheckBox
+                android:id="@+id/changeSQualificationActivityNationalMeritCheckBox"
+                style="@style/check_type_mainColor_checkBox"
+                android:text="@string/changeSQualificationActivityNationalMeritLabel" />
+
+            <CheckBox
+                android:id="@+id/changeSQualificationActivityIndustrialAccidentCheckBox"
+                style="@style/check_type_mainColor_checkBox"
+                android:text="@string/changeSQualificationActivityIndustrialAccidentLabel" />
+
+            <CheckBox
+                android:id="@+id/changeSQualificationActivityActiveSoldierCheckBox"
+                style="@style/check_type_mainColor_checkBox"
+                android:text="@string/changeSQualificationActivityActiveSoldierLabel" />
+
+            <CheckBox
+                android:id="@+id/changeSQualificationActivityLongTermSoldierCheckBox"
+                style="@style/check_type_mainColor_checkBox"
+                android:text="@string/changeSQualificationActivityLongTermSoldierLabel" />
+
+            <CheckBox
+                android:id="@+id/changeSQualificationActivityPrivateSchoolCheckBox"
+                style="@style/check_type_mainColor_checkBox"
+                android:text="@string/changeSQualificationActivityPrivateSchoolLabel" />
+
+            <CheckBox
+                android:id="@+id/changeSQualificationActivityEmploymentInsuranceCheckBox"
+                style="@style/check_type_mainColor_checkBox"
+                android:text="@string/changeSQualificationActivityEmploymentInsuranceLabel" />
+
+            <CheckBox
+                android:id="@+id/changeSQualificationActivityStudentHeadCheckBox"
+                style="@style/check_type_mainColor_checkBox"
+                android:text="@string/changeSQualificationActivityStudentHeadLabel" />
+
+            <CheckBox
+                android:id="@+id/changeSQualificationActivitySingleParentFamilyCheckBox"
+                style="@style/check_type_mainColor_checkBox"
+                android:text="@string/changeSQualificationActivitySingleParentFamilyLabel" />
+
+            <CheckBox
+                android:id="@+id/changeSQualificationActivityDisabledCheckBox"
+                style="@style/check_type_mainColor_checkBox"
+                android:text="@string/changeSQualificationActivityDisabledLabel" />
+
+            <CheckBox
+                android:id="@+id/changeSQualificationActivityMulticulturalFamilyCheckBox"
+                style="@style/check_type_mainColor_checkBox"
+                android:text="@string/changeSQualificationActivityMulticulturalFamilyLabel" />
+
+            <CheckBox
+                android:id="@+id/changeSQualificationActivityAgricultureForestryFisheriesCheckBox"
+                style="@style/check_type_mainColor_checkBox"
+                android:text="@string/changeSQualificationActivityAgricultureForestryFisheriesLabel" />
+
+            <CheckBox
+                android:id="@+id/changeSQualificationActivityNorthKoreaDefectorCheckBox"
+                style="@style/check_type_mainColor_checkBox"
+                android:text="@string/changeSQualificationActivityNorthKoreaDefectorLabel" />
+
+            <CheckBox
+                android:id="@+id/changeSQualificationActivityHighwayAccidentCheckBox"
+                style="@style/check_type_mainColor_checkBox"
+                android:text="@string/changeSQualificationActivityHighwayAccidentLabel" />
+
+            <CheckBox
+                android:id="@+id/changeSQualificationActivitySmallBusinessCheckBox"
+                style="@style/check_type_mainColor_checkBox"
+                android:text="@string/changeSQualificationActivitySmallBusinessLabel" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/changeSQualificationActivityCancelButton"
+            style="@style/moreInfoFragmentSmallButton"
+            android:background="@drawable/rectangle_lightgray_color"
+            android:text="@string/cancelLabel" />
+
+        <Button
+            android:id="@+id/changeSQualificationActivityUpdateButton"
+            style="@style/moreInfoFragmentSmallButton"
+            android:background="@drawable/rectangle_basic_color"
+            android:text="@string/updateLabel" />
+    </LinearLayout>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
