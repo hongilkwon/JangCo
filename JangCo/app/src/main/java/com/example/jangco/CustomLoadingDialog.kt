@@ -1,18 +1,20 @@
 package com.example.jangco
 
-import android.app.Dialog
 import android.app.ProgressDialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.Window
-import android.view.animation.AnimationUtils
-import android.widget.ImageView
 
-class CustomLoadingDialog(context: Context?) : ProgressDialog(context) {
-    private var imgLogo: ImageView? = null
+class CustomLoadingDialog(var type: Int, context: Context?) : ProgressDialog(context) {
+//    private var imgLogo: ImageView? = null
 
+
+    companion object {
+        val LOGIN_LOADING_DIALOG_TYPE = 1
+        val DATA_LOADING_DIALOG_TYPE = 2
+    }
     init {
         requestWindowFeature(Window.FEATURE_NO_TITLE)
         window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
@@ -22,11 +24,11 @@ class CustomLoadingDialog(context: Context?) : ProgressDialog(context) {
     // 왜그런지 모르겠다.
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.custom_dialog)
 
-        imgLogo = findViewById(R.id.img_android) as ImageView
-        val anim = AnimationUtils.loadAnimation(context, R.anim.loading)
-        imgLogo!!.animation = anim
+        when(type){
+            LOGIN_LOADING_DIALOG_TYPE -> setContentView(R.layout.login_loading_dialog)
+            DATA_LOADING_DIALOG_TYPE -> setContentView(R.layout.data_loading_dialog)
+        }
     }
 
 }

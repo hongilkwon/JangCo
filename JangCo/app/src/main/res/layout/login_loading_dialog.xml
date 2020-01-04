@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
-
+    <!--
     <ImageView
         android:id="@+id/img_android"
         android:layout_width="50dp"
@@ -16,5 +16,18 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    -->
+    <com.aseem.versatileprogressbar.ProgBar
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:elevation="10dp"
+        app:androidtextColor="@color/colorPrimary"
+        app:barType="@drawable/color_capsule"
+        app:enlarge="3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+      />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

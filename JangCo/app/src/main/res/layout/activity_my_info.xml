@@ -25,9 +25,10 @@
         android:padding="16dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/myInfoActivityProfileCircleVIew"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@mipmap/ic_launcher_round"
+            android:src="@drawable/ic_default_user_profile_256dp"
             app:civ_border_width="1dp"
             app:civ_border_color="@color/colorGray"/>
 
@@ -67,6 +68,7 @@
 
 
     <TextView
+        android:id="@+id/myInfoActivityEmailTextView"
         style="@style/moreInfoFragmentListMenuText"
         android:drawableLeft="@drawable/ic_user_email_24dp"
         android:text="@string/moreInfoFragmentMyInfoEmail"/>
@@ -82,6 +84,7 @@
             android:drawableLeft="@drawable/ic_user_password_24dp"
             android:text="@string/moreInfoFragmentMyInfoPasswordChange"/>
         <ImageView
+            android:id="@+id/myInfoActivityChangePwImageView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -101,6 +104,7 @@
             android:drawableLeft="@drawable/ic_user_home_24dp"
             android:text="@string/moreInfoFragmentMyInfoAddressChange"/>
         <ImageView
+            android:id="@+id/myInfoActivityChangeAddressImageView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -120,6 +124,7 @@
             android:drawableLeft="@drawable/ic_user_school_24dp"
             android:text="@string/moreInfoFragmentMyInfoSchoolChange"/>
         <ImageView
+            android:id="@+id/myInfoActivityChangeSchoolImageView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -139,6 +144,7 @@
             android:drawableLeft="@drawable/ic_user_grade_24dp"
             android:text="@string/moreInfoFragmentMyInfoGradeChange"/>
         <ImageView
+            android:id="@+id/myInfoActivityChangeGradeImageView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -158,6 +164,7 @@
             android:drawableLeft="@drawable/ic_user_income_24dp"
             android:text="@string/moreInfoFragmentMyInfoIncomeChange"/>
         <ImageView
+            android:id="@+id/myInfoActivityChangeIncomeImageView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -177,6 +184,7 @@
             android:drawableLeft="@drawable/ic_user_squalification_24dp"
             android:text="@string/moreInfoFragmentMyInfoSqualificationChange"/>
         <ImageView
+            android:id="@+id/myInfoActivityChangeSQualificationImageView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

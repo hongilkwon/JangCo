@@ -1,8 +1,8 @@
 package com.example.jangco
 
 
+import android.annotation.SuppressLint
 import android.content.Context
-import android.content.DialogInterface
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -12,7 +12,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
-import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import java.lang.Exception
 import java.util.regex.Pattern
@@ -27,17 +26,24 @@ class SignUpSchoolGradeInfoFragment : Fragment(), View.OnClickListener {
     //검색창
     var schoolSearchEditText: EditText? = null
     var schoolName: TextView? = null
+    var majorMap = HashMap<String,String>()
     // 스피너
     var majorSelectSpinner: Spinner? = null
     var spinnerAdapter: ArrayAdapter<String>? = null
-    // 성적.
+    // 라디오 버튼.
+    var statusRadioGroup: RadioGroup? = null
+
+    var status: String? = null
+    // 성적
     var signUpSchoolGradeTotalAverage: EditText? = null
     var signUpSchoolGradeTotalPercentage: EditText? = null
     var signUpSchoolGradeLastAverage: EditText? = null
     var signUpSchoolGradeLastPercentage: EditText? = null
     // 완료 버튼.
     var signUpCompleteButton: Button? = null
-    // 성적 레이아웃.
+    // 학교정보 레이아웃.
+    var schoolLayout: LinearLayout? = null
+    // 성적정보 레이아웃.
     var gradeLayout: LinearLayout? = null
 
     override fun onCreateView(
@@ -67,11 +73,10 @@ class SignUpSchoolGradeInfoFragment : Fragment(), View.OnClickListener {
                         //Toast.makeText(context,selectedName,Toast.LENGTH_LONG).show()
                         schoolName?.text = selectedName
                         // 학교이름창 및 전공선택 스피너, 성적 레이아웃 보이게 하기.
-                        if(schoolName?.visibility == View.INVISIBLE)
-                            schoolName?.visibility = View.VISIBLE
-                        if(majorSelectSpinner?.visibility == View.INVISIBLE)
-                            majorSelectSpinner?.visibility= View.VISIBLE
-                        if(gradeLayout?.visibility == View.GONE){
+                        if(schoolLayout?.visibility == View.INVISIBLE){
+                            schoolLayout?.visibility = View.VISIBLE
+                        }
+                        if(gradeLayout?.visibility == View.INVISIBLE){
                             gradeLayout?.visibility = View.VISIBLE
                         }
                         // Recyclerview item 클릭시 List안보이게.
@@ -89,12 +94,11 @@ class SignUpSchoolGradeInfoFragment : Fragment(), View.OnClickListener {
                 //Log.d("afterTextChanged","변함")
                 //Log.d("afterTextChanged",s.toString())
                 // 학교이름창 및 전공선택 스피너, 성적 레이아웃 안보이게 하기.
-                if(schoolName?.visibility == View.VISIBLE)
-                    schoolName?.visibility = View.INVISIBLE
-                if(majorSelectSpinner?.visibility == View.VISIBLE)
-                    majorSelectSpinner?.visibility= View.INVISIBLE
+                if(schoolLayout?.visibility == View.VISIBLE){
+                    schoolLayout?.visibility = View.INVISIBLE
+                }
                 if(gradeLayout?.visibility == View.VISIBLE){
-                    gradeLayout?.visibility = View.GONE
+                    gradeLayout?.visibility = View.INVISIBLE
                 }
                 // RecyclerView 보이게 하기.
                 if(schoolRecyclerView?.visibility == View.GONE)
@@ -107,9 +111,21 @@ class SignUpSchoolGradeInfoFragment : Fragment(), View.OnClickListener {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             }
         })
-        //
-        gradeLayout = view.findViewById(R.id.signUpSchoolGradeInfoGradeLayout)
 
+        // 학교 및 성적 레이아웃.
+        gradeLayout = view.findViewById(R.id.signUpSchoolGradeInfoGradeLayout)
+        schoolLayout = view.findViewById(R.id.signUpSchoolGradeInfoSchoolLayout)
+        // 학적 상태
+        statusRadioGroup = view.findViewById(R.id.signUpSchoolGradeInfoStatusRadioGroup)
+        status = getString(R.string.searchForSchoolAttending)
+        statusRadioGroup?.setOnCheckedChangeListener { group, checkedId ->
+            when(checkedId){
+                R.id.Attending -> {status = getString(R.string.searchForSchoolAttending)}
+                R.id.Absence -> { status = getString(R.string.searchForSchoolAbsence)}
+                R.id.Graduated -> {status = getString(R.string.searchForSchoolGraduated)}
+
+            }
+        }
         // 성적EditText 참조.
         signUpSchoolGradeTotalAverage = view.findViewById(R.id.signUpSchoolGradeInfoTotalAverage)
         signUpSchoolGradeTotalPercentage = view.findViewById(R.id.signUpSchoolGradeInfoTotalPercentage)
@@ -132,6 +148,10 @@ class SignUpSchoolGradeInfoFragment : Fragment(), View.OnClickListener {
         if(!inspectionMajorSpinner(majorSelectSpinner)){
             return false
         }
+        if (status?.isNullOrEmpty()!!){
+            Toast.makeText(context,R.string.statusSelectInspection,Toast.LENGTH_SHORT).show()
+            return false
+        }
         if(!inspectionAverageGrade(signUpSchoolGradeTotalAverage?.
                 text?.toString()?.trim()?.replace(" ",""))){
             return false
@@ -150,6 +170,7 @@ class SignUpSchoolGradeInfoFragment : Fragment(), View.OnClickListener {
         }
         return true
     }
+
     // 전공선택 스피너 검사.
     fun inspectionMajorSpinner(spinner: Spinner?):Boolean{
 
@@ -195,15 +216,22 @@ class SignUpSchoolGradeInfoFragment : Fragment(), View.OnClickListener {
     // 모든 버튼 클릭 리스너
     override fun onClick(v: View?) {
         when(v?.id){
-            R.id.signUpSchoolGradeInfoComplete ->{
+            R.id.signUpSchoolGradeInfoComplete -> {
                 if(inspectionSchoolGradeIfo()){
-
                     // 학교 객체 생성
-                    var schoolName = schoolName?.text.toString()
-                    var major =  majorSelectSpinner?.selectedItem.toString().split(" ")
 
-                    signUpActivity?.school =  School(schoolName ,major[0], major[1])
 
+                    var selectedItem =  majorSelectSpinner?.selectedItem.toString()
+
+                    var selectedMajor = selectedItem.split(" ")
+                    var etcInfo = majorMap[selectedItem]?.split("*")
+
+
+                    signUpActivity?.school =  School(arrayListOf<String>(schoolName?.text.toString()),
+                        arrayListOf<String>(selectedMajor[0]), arrayListOf<String>(selectedMajor[1]),
+                        arrayListOf<String>(etcInfo?.get(0)!!),
+                        arrayListOf<String>(status!!)
+                    )
                     // 성적 객체 생성
                     var totalAverage = signUpSchoolGradeTotalAverage?.text.toString().toDouble()
                     var totalPercentage = signUpSchoolGradeTotalPercentage?.text.toString().toLong()
@@ -233,10 +261,18 @@ class SignUpSchoolGradeInfoFragment : Fragment(), View.OnClickListener {
     fun settingSpinner(){
         if(schoolName?.text.toString().isNotEmpty()) {
             var majorData = signUpActivity?.schoolData?.get(schoolName?.text.toString())
-            majorData?.sort()
+            // 학과 계열 : 기타로  해쉬맵생성.
+            for( item in majorData!!){
+                var tempList=item.split("*")
+                majorMap.put(tempList[0]+" "+tempList[1],tempList[2])
+            }
+            // 해쉬맵에서 키만 빼서 리스트로 생성, 정렬
+            var spinnerData = majorMap.keys.toMutableList()
+            spinnerData?.sort()
+            // 셋팅.
             val spinnerTitle = signUpActivity?.getString(R.string.MajorSpinnerTitle)
-            majorData?.add(0, spinnerTitle!!)
-            spinnerAdapter = ArrayAdapter(context,android.R.layout.simple_spinner_item, majorData)
+            spinnerData?.add(0, spinnerTitle!!)
+            spinnerAdapter = ArrayAdapter(context,android.R.layout.simple_spinner_item, spinnerData)
             spinnerAdapter!!.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             majorSelectSpinner?.adapter =spinnerAdapter
             var listener = SpinnerListener()

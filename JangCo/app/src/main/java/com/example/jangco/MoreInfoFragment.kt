@@ -1,10 +1,10 @@
 package com.example.jangco
 
 
+import android.app.Activity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.TextureView
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
@@ -16,11 +16,12 @@ import android.widget.Toast
 
 class MoreInfoFragment : Fragment(), View.OnClickListener{
 
-
+    private val MYINFO_ACTIVITY = 1
     private var mainActivity: MainActivity? = null
 
     private var myInfoIcon: ImageView? = null
 
+    private  var basicComment: TextView? = null
     private var noticeTextView: TextView? = null
     private var eventTextView: TextView? = null
     private var guideTextView: TextView? = null
@@ -35,6 +36,11 @@ class MoreInfoFragment : Fragment(), View.OnClickListener{
 
         var view = inflater.inflate(R.layout.fragment_more_info, container, false)
         mainActivity = activity as MainActivity
+
+        //코멘트
+        basicComment = view.findViewById(R.id.moreInfoFragmentBasicComment) as TextView
+        basicComment!!.text =  mainActivity!!.userProfile?.nickName + getString(R.string.moreInfoFragmentBasicComment)
+
         //상단메뉴
         myInfoIcon = view.findViewById(R.id.moreInfoFragmentMyInfo)
         myInfoIcon?.setOnClickListener(this)
@@ -65,9 +71,10 @@ class MoreInfoFragment : Fragment(), View.OnClickListener{
 
         when(v?.id){
             // 상단 메뉴.
-            R.id.moreInfoFragmentMyInfo ->{
+            R.id.moreInfoFragmentMyInfo -> {
                 var intent = Intent(context, MyInfoActivity::class.java)
-                startActivity(intent)
+                intent.putExtra("userAllInfo",mainActivity?.userAllInfo)
+                startActivityForResult(intent,MYINFO_ACTIVITY)
             }
             // 하단 메뉴들.
             R.id.moreInfoFragmentNoticeTextView -> {
@@ -104,5 +111,24 @@ class MoreInfoFragment : Fragment(), View.OnClickListener{
             startActivity(emailIntent)
         else
             Toast.makeText(context, getString(R.string.emailAlter), Toast.LENGTH_SHORT).show()
+    }
+
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        when(requestCode){
+            MYINFO_ACTIVITY ->{
+                if(resultCode == Activity.RESULT_OK)
+                    mainActivity?.userAllInfo = data?.getSerializableExtra("userAllInfo") as HashMap<String, Any>
+                mainActivity?.updateData()
+                basicComment!!.text =  mainActivity!!.userProfile?.nickName + getString(R.string.moreInfoFragmentBasicComment)
+                // Test 토스트 메시지
+                // Toast.makeText(context,mainActivity!!.userAddress?.cityProvince + mainActivity!!.userAddress?.district,Toast.LENGTH_SHORT).show()
+                // Toast.makeText(context,mainActivity!!.userSchool?.name + mainActivity!!.userSchool?.major+mainActivity!!.userSchool?.track+mainActivity!!.userSchool?.status,Toast.LENGTH_SHORT).show()
+                // Toast.makeText(context,"${mainActivity!!.userGrade?.totalAverageGrade}, ${mainActivity!!.userGrade?.totalPercentage}," +
+                //        " ${mainActivity!!.userGrade?.lastAverageGrade}, ${mainActivity!!.userGrade?.lastPercentage}",Toast.LENGTH_LONG).show()
+            }
+
+        }
     }
 }

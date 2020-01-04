@@ -29,7 +29,6 @@ class RecyclerItemClickListener(context: Context, recyclerView: RecyclerView, pr
             } catch (e: Exception) {
                 e.printStackTrace()
             }
-
             return true
         }
         return false

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:orientation="vertical"
+    tools:context=".ChangeSchoolActivity">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/changeSchoolActivityToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:minHeight="?attr/actionBarSize"
+        android:elevation="2dp"
+        android:theme="?attr/actionBarTheme" />
+
+    <TextView
+        android:layout_marginTop="32dp"
+        style="@style/signUpLabelTextVIew"
+        android:text="@string/searchLabel"/>
+
+    <LinearLayout
+        android:layout_marginTop="12dp"
+        android:layout_width="320dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+        <EditText
+            android:id="@+id/changeSchoolActivitySearchEditText"
+            android:drawableRight="@drawable/ic_search_black_36dp"
+            android:paddingRight="4dp"
+            style="@style/searchViewEdit"
+            />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/changeSchoolActivityRecyclerView"
+        android:layout_width="320dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:paddingBottom="8dp"
+        android:background="@color/colorWhite"
+        android:visibility="gone"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+    <LinearLayout
+        android:id="@+id/changeSchoolActivitySchoolLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:visibility="invisible"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/changeSchoolActivitySchoolNameTextView"
+            android:layout_marginTop="12dp"
+            style="@style/signUPBigEditText"
+            android:drawablePadding="6dp"
+            android:drawableLeft="@drawable/ic_school_36dp"
+            />
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:layout_marginTop="12dp"
+            android:id="@+id/changeSchoolActivityMajorSelectSpinner"
+            android:layout_width="320dp"
+            android:layout_height="36dp"
+            android:layout_gravity="center"
+            android:dropDownWidth="320dp"
+            android:background="@drawable/round_out_line_1dp"/>
+
+        <RadioGroup
+            android:id="@+id/changeSchoolActivityStatusRadioGroup"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:checkedButton="@+id/Attending">
+            <RadioButton
+                android:id="@+id/Attending"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/colorRed"
+                android:text="@string/searchForSchoolAttending"/>
+            <RadioButton
+                android:id="@+id/Absence"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
+                android:buttonTint="@color/colorRed"
+                android:text="@string/searchForSchoolAbsence"/>
+            <RadioButton
+                android:id="@+id/Graduated"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
+                android:buttonTint="@color/colorRed"
+                android:text="@string/searchForSchoolGraduated"/>
+        </RadioGroup>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/changeSchoolActivityCancelButton"
+            style="@style/moreInfoFragmentSmallButton"
+            android:background="@drawable/rectangle_lightgray_color"
+            android:text="@string/cancelLabel" />
+        <Button
+            android:id="@+id/changeSchoolActivityUpdateButton"
+            style="@style/moreInfoFragmentSmallButton"
+            android:background="@drawable/rectangle_basic_color"
+            android:text="@string/updateLabel"/>
+    </LinearLayout>
+
+</LinearLayout>

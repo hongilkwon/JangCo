@@ -19,10 +19,12 @@ class CvsReader {
         data = csvReader.readAll()
         for ( item in data ){
             if(map.containsKey(item.get(0))){
-                map.get(item.get(0))?.add(item.get(1)+" "+item.get(2))
+                //map.get(item.get(0))?.add(item.get(1)+"*"+item.get(2)+"*"+item.get(3)+"*"+item.get(4)+"*"+item.get(5)+"*"+item.get(6))
+                map.get(item.get(0))?.add(item.get(1)+"*"+item.get(2)+"*"+item.get(3))
 
             }else{
-                map.put(item.get(0), arrayListOf(item.get(1)+" "+item.get(2)))
+                //map.put(item.get(0), arrayListOf(item.get(1)+"*"+item.get(2)+"*"+item.get(3)+"*"+item.get(4)+"*"+item.get(5)+"*"+item.get(6)))
+                map.put(item.get(0), arrayListOf(item.get(1)+"*"+item.get(2)+"*"+item.get(3)))
             }
         }
         return map

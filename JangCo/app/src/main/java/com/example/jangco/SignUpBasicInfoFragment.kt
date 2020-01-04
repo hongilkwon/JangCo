@@ -145,11 +145,12 @@ class SignUpBasicInfoFragment : Fragment(), View.OnClickListener, TextView.OnEdi
                 }
             }
             R.id.signUpBasicInfoFragmentPWConfirmEditText -> {
-
+                //.....
             }
         }
         return false
     }
+
     // 텍스트 왓쳐 내부 클래스
     inner class PwConfirmTextWatcher(var editText: EditText?): android.text.TextWatcher{
 

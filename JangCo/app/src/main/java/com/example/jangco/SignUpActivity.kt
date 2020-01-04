@@ -20,9 +20,9 @@ class SignUpActivity : AppCompatActivity() {
     val SIGNUP_BASIC_INFO: Int = 1
     val SIGNUP_SCHOOL_GRADE_INFO: Int = 2
 
-    var majorData: Array<String>? = null
     var schoolData:HashMap<String,ArrayList<String>> = HashMap<String,ArrayList<String>>()
     var schoolDataKeys: MutableSet<String>? = null
+
     private var fragmentManager = supportFragmentManager
     var signUpBasicInfoFragment = SignUpBasicInfoFragment()
     var signUpSchoolGradeInfoFragment = SignUpSchoolGradeInfoFragment()
@@ -33,7 +33,6 @@ class SignUpActivity : AppCompatActivity() {
     var address: Address? = null
     var school: School? = null
     var grade: Grade? = null
-
 
     private lateinit var auth: FirebaseAuth
 
@@ -85,7 +84,7 @@ class SignUpActivity : AppCompatActivity() {
         var toolbar = layoutInflater.inflate(R.layout.activity_sign_up_toolbar, null)
         supportActionBar?.customView = toolbar
 
-        var backButton = toolbar.findViewById<ImageView>(R.id.noticeBoardToolbarBackImageView)
+        var backButton = toolbar.findViewById<ImageView>(R.id.signUpToolbarBackImageView)
         backButton.setOnClickListener{ view ->
             finish()
         }
@@ -142,7 +141,6 @@ class SignUpActivity : AppCompatActivity() {
                     DialogInterface.BUTTON_POSITIVE ->{
                         finish()
                     }
-
                 }
             }
         }

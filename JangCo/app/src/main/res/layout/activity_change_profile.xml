@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorWhite"
+    tools:context=".ChangeProfileActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/changeProfileActivityToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:minHeight="?attr/actionBarSize"
+        android:elevation="2dp"
+        android:theme="?attr/actionBarTheme" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/changeProfileActivityProImageCircleVIew"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_default_user_profile_256dp"
+            app:civ_border_width="1dp"
+            app:civ_border_color="@color/colorGray"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/changeProfileActivityCameraButton"
+                android:layout_width="120dp"
+                android:layout_height="30dp"
+                android:background="@drawable/round_out_line_1dp"
+                android:paddingLeft="10dp"
+                android:drawablePadding="4dp"
+                android:gravity="left|center"
+                android:drawableLeft="@drawable/ic_camera_gray_24dp"
+                android:text="사진 올리기"
+                android:textSize="12sp"/>
+
+            <Button
+                android:id="@+id/changeProfileActivityAlbumButton"
+                android:layout_width="120dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="6dp"
+                android:paddingLeft="10dp"
+                android:drawablePadding="4dp"
+                android:gravity="left|center"
+                android:background="@drawable/round_out_line_1dp"
+                android:drawableLeft="@drawable/ic_photo_album_gray_24dp"
+                android:text="앨범 가져오기"
+                android:textSize="12sp"/>
+        </LinearLayout>
+        <EditText
+            android:id="@+id/changeProfileActivityNickNameEditText"
+            android:layout_width="246dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="18dp"
+            android:padding="6dp"
+            android:singleLine="true"
+            android:drawableRight="@drawable/ic_cancel"
+            android:background="@drawable/round_out_line_1dp"
+            android:textSize="14sp"
+            android:hint="별명"
+            />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/changeProfileActivityCancelButton"
+            style="@style/moreInfoFragmentSmallButton"
+            android:background="@drawable/rectangle_lightgray_color"
+            android:text="@string/cancelLabel" />
+        <Button
+            android:id="@+id/changeProfileActivityUpdateButton"
+            style="@style/moreInfoFragmentSmallButton"
+            android:background="@drawable/rectangle_basic_color"
+            android:text="@string/updateLabel"/>
+    </LinearLayout>
+</LinearLayout>

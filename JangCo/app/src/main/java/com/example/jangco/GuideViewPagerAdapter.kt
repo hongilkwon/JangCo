@@ -29,6 +29,7 @@ class GuideViewPagerAdapter(val context: Context, val guideImageList: ArrayList<
         container.addView(view)
         return view
     }
+
     override fun getCount(): Int {
        return guideImageList.size
     }
