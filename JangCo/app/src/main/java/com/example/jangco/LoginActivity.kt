@@ -2,17 +2,22 @@ package com.example.jangco
 
 import android.Manifest
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Base64
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.example.jangco.CustomLoadingDialog.Companion.LOGIN_LOADING_DIALOG_TYPE
 import com.google.firebase.auth.FirebaseAuth
+import com.kakao.util.helper.Utility
 import kotlinx.android.synthetic.main.activity_login.*
+import java.security.MessageDigest
+import java.security.NoSuchAlgorithmException
 
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener {
@@ -35,6 +40,8 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         permissionCheck()
+
+        Log.d("test", getKeyHash(this))
 
         auth = FirebaseAuth.getInstance()
         loadingDialog = CustomLoadingDialog(LOGIN_LOADING_DIALOG_TYPE,this)
@@ -134,5 +141,21 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         }
         loadingDialog.dismiss()
         super.onDestroy()
+    }
+
+    private fun getKeyHash(context: Context): String? {
+        val packageInfo = Utility.getPackageInfo(context, PackageManager.GET_SIGNATURES) ?: return null
+
+        for (signature in packageInfo.signatures) {
+            try {
+                val md = MessageDigest.getInstance("SHA")
+                md.update(signature.toByteArray())
+                return Base64.encodeToString(md.digest(), Base64.NO_WRAP)
+            } catch (e: NoSuchAlgorithmException) {
+                Log.w(TAG, "Unable to get MessageDigest. signature=$signature", e)
+            }
+
+        }
+        return null
     }
 }

@@ -10,8 +10,17 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import android.widget.ImageView
 import android.widget.Toast
+import com.kakao.kakaolink.v2.KakaoLinkResponse
+import com.kakao.kakaolink.v2.KakaoLinkService
+import com.kakao.message.template.ButtonObject
+import com.kakao.message.template.ContentObject
+import com.kakao.message.template.FeedTemplate
+import com.kakao.message.template.LinkObject
+import com.kakao.network.ErrorResult
+import com.kakao.network.callback.ResponseCallback
 
 
 class MoreInfoFragment : Fragment(), View.OnClickListener{
@@ -93,7 +102,9 @@ class MoreInfoFragment : Fragment(), View.OnClickListener{
                 sendEmail()
             }
             R.id.moreInfoFragmentSettingTextView -> {}
-            R.id.moreInfoFragmentShareAppTextView -> {}
+            R.id.moreInfoFragmentShareAppTextView -> {
+                shareApp()
+            }
         }
     }
 
@@ -111,6 +122,43 @@ class MoreInfoFragment : Fragment(), View.OnClickListener{
             startActivity(emailIntent)
         else
             Toast.makeText(context, getString(R.string.emailAlter), Toast.LENGTH_SHORT).show()
+    }
+
+    private fun shareApp() {
+        val contentObject = ContentObject.newBuilder(
+            "JangCo", // 앱 이름
+            "", // 카카오톡 공유 이미지
+            LinkObject.newBuilder().setWebUrl("https://developers.kakao.com")
+                .setMobileWebUrl("https://developers.kakao.com").build())
+            .setDescrption("장학금 개별맞춤 앱") // 앱 설명
+            .build()
+
+        val params = FeedTemplate.newBuilder(contentObject)
+            .addButton(
+                ButtonObject("앱에서 보기", LinkObject.newBuilder()
+                    .setWebUrl("'https://developers.kakao.com")
+                    .setMobileWebUrl("'https://developers.kakao.com")
+                    .setAndroidExecutionParams("key1=value1")
+                    .setIosExecutionParams("key1=value1")
+                    .build())
+            )
+            .build()
+
+        val serverCallbackArgs = HashMap<String, String>()
+        serverCallbackArgs["user_id"] = "\${current_user_id}"
+        serverCallbackArgs["product_id"] = "\${shared_product_id}"
+
+        KakaoLinkService.getInstance().sendDefault(context, params, serverCallbackArgs,
+            object : ResponseCallback<KakaoLinkResponse>() {
+                override fun onSuccess(result: KakaoLinkResponse?) {
+                    Log.d("test", result.toString())
+                }
+
+                override fun onFailure(errorResult: ErrorResult?) {
+                    Log.d("test", errorResult.toString())
+                }
+
+            })
     }
 
 
