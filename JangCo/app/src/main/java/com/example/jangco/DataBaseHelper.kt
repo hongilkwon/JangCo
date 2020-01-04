@@ -20,12 +20,14 @@ class DataBaseHelper(val id: String, val fireStore: FirebaseFirestore = Firebase
         @SuppressLint("StaticFieldLeak")
         val fireStore = FirebaseFirestore.getInstance()
 
-        @JvmStatic fun registerNewUserData(user: User, address :Address, school: School, grade: Grade){
+        @JvmStatic fun registerNewUserData(user: User, address :Address, school: School, grade: Grade, income: Income, squalification: SQualification){
             fireStore.collection("User").document(user.id!!).set(user)
             var userInfoRef = fireStore.collection("User").document(user.id).collection("UserInfo")
             userInfoRef.document("address").set(address)
             userInfoRef.document("school").set(school)
             userInfoRef.document("grade").set(grade)
+            userInfoRef.document("income").set(income)
+            userInfoRef.document("squalification").set(squalification)
         }
     }
 

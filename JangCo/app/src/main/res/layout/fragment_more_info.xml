@@ -121,7 +121,7 @@
             android:text="@string/moreInfoFragmentShareApp"/>
         <TextView
             style="@style/moreInfoFragmentListMenuText"
-            android:text="@string/moreInfoFragmentJangCo"/>
+            android:text="@string/moreInfoFragmentDaBaDa"/>
 
     </LinearLayout>
 

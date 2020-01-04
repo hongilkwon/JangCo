@@ -29,8 +29,6 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         Manifest.permission.WRITE_EXTERNAL_STORAGE
     )
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -40,20 +38,20 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         loadingDialog = CustomLoadingDialog(LOGIN_LOADING_DIALOG_TYPE,this)
         loginActivitySignUpTextView.setOnClickListener(this)
         loginActivityLoginButton.setOnClickListener(this)
-//        // 자동로그인.
-//        if (savedInstanceState == null) {
-//            val prefs = getSharedPreferences("person_Info",0)
-//
-//            val id = prefs.getString("id", "").toString().trim()
-//            val pw = prefs.getString("pw", "").toString().trim()
-//            val checked = prefs.getBoolean("checked",false)
-//            loginActivityIDEditText.setText(id)
-//            loginActivityPWEditText.setText(pw)
-//            loginActivityAutoLoginCheckBox.setChecked(checked)
-//
-//            var intent = Intent(this, MainActivity::class.java)
-//            login(id, pw, intent)
-//        }
+        // 자동로그인.
+        if (savedInstanceState == null) {
+            val prefs = getSharedPreferences("person_Info",0)
+
+            val id = prefs.getString("id", "").toString().trim()
+            val pw = prefs.getString("pw", "").toString().trim()
+            val checked = prefs.getBoolean("checked",false)
+            loginActivityIDEditText.setText(id)
+            loginActivityPWEditText.setText(pw)
+            loginActivityAutoLoginCheckBox.setChecked(checked)
+
+            var intent = Intent(this, MainActivity::class.java)
+            login(id, pw, intent)
+        }
     }
 
     private fun permissionCheck() {

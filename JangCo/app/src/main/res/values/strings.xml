@@ -7,7 +7,7 @@
     <string name="login">로그인</string>
     <string name="autoLogin">자동로그인</string>
     <string name="signUp">회원가입</string>
-    <string name="signUpComment">아직 JanCo의 회원이 아니신가요?</string>
+    <string name="signUpComment">아직 회원이 아니신가요?</string>
     <string name="loginHelp">도움이 필요하신가요?</string>
     <string name="loginFail">"Email 또는 Pw가 정확하지 않습니다."</string>
     <string name="loginEmptyEmailPw">Email 또는 Pw를 입력하지 않았습니다.</string>
@@ -38,7 +38,7 @@
     <string name="searchForSchoolAttending">재학생</string>
     <string name="searchForSchoolAbsence">휴학생</string>
     <string name="searchForSchoolGraduated">졸업생</string>
-    
+
     <string name="gradeInfoLabel">Grade Info</string>
     <string name="MajorSpinnerTitle">학과를 선택하세요</string>
     <string name="totalGradeLabel">전체 성적정보</string>
@@ -102,10 +102,11 @@
 
     <!--change income -->
     <string name="changeIncomeActivityBasicTierLabel">기초 생활 수급자 (기준 중위 소득 30% 이하)</string>
-
     <string name="changeIncomeActivitySecondTierLabel">차상위 계층 (기준 중위 소득 50% 이하)</string>
-
-
+    <string name="changeIncomeActivityETCLabel">기타 (기준 중위 소득 50% 초과)</string>
+    <string name="familyNumberHint">가구수</string>
+    <string name="familyMonthIncomeHint">월수입 (단위: 만)</string>
+    <string name="medianIncomePercentage">예상 중위 소득 분위:</string>
 
     <string name="moreInfoFragmentScholarshipRecord">장학이력</string>
     <string name="moreInfoFragmentMyScholarship">찜</string>
@@ -130,5 +131,5 @@
 
     <string name="moreInfoFragmentPreferences">환경설정</string>
     <string name="moreInfoFragmentShareApp">친구에게 App 공유하기</string>
-    <string name="moreInfoFragmentJangCo">Jang Co</string>
+    <string name="moreInfoFragmentDaBaDa">DaBaDa</string>
 </resources>

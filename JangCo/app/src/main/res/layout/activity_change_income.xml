@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ChangeIncomeActivity">
-
 
 
     <androidx.appcompat.widget.Toolbar
@@ -17,30 +15,84 @@
         android:minHeight="?attr/actionBarSize"
         android:elevation="2dp"
         android:theme="?attr/actionBarTheme" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
 
-    <RadioGroup
-        android:layout_width="320dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center">
-        <RadioButton
-            android:id="@+id/changeIncomeActivityBasicTierCheckBox"
-            style="@style/check_type_mainColor_checkBox"
-            android:text="@string/changeIncomeActivityBasicTierLabel"
-            />
-        <RadioButton
-            android:id="@+id/changeIncomeActivitySecondTierCheckBox"
-            style="@style/check_type_mainColor_checkBox"
-            android:layout_marginTop="12dp"
-            android:text="@string/changeIncomeActivitySecondTierLabel"
-            />
-        <RadioButton
-            android:id="@+id/changeIncomeActivityETCCheckBox"
-            style="@style/check_type_mainColor_checkBox"
-            android:layout_marginTop="12dp"
-            android:text="@string/changeIncomeActivitySecondTierLabel"
-            />
-    </RadioGroup>
+        <RadioGroup
+            android:id="@+id/changeIncomeActivityTierRadioGroup"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:layout_gravity="center">
+            <RadioButton
+                android:id="@+id/changeIncomeActivityBasicTierCheckBox"
+                style="@style/check_type_mainColor_checkBox"
+                android:text="@string/changeIncomeActivityBasicTierLabel"
+                />
+            <RadioButton
+                android:id="@+id/changeIncomeActivitySecondTierCheckBox"
+                style="@style/check_type_mainColor_checkBox"
+                android:text="@string/changeIncomeActivitySecondTierLabel"
+                />
+            <RadioButton
+                android:id="@+id/changeIncomeActivityETCCheckBox"
+                style="@style/check_type_mainColor_checkBox"
+                android:text="@string/changeIncomeActivityETCLabel"
+                />
+        </RadioGroup>
 
+        <LinearLayout
+            android:id="@+id/changeIncomeActivityETCLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:visibility="gone">
+            <LinearLayout
+                android:layout_marginTop="36dp"
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <EditText
+                    android:id="@+id/changeIncomeActivityFamilyNumberEditText"
+                    style="@style/incomeEditText"
+                    android:layout_weight="1"
+                    android:layout_marginRight="8dp"
+                    android:drawableLeft="@drawable/ic_family"
+                    android:hint="@string/familyNumberHint" />
+                <EditText
+                    android:id="@+id/changeIncomeActivityFamilyMonthIncomeEditText"
+                    style="@style/incomeEditText"
+                    android:layout_weight="2"
+                    android:drawableLeft="@drawable/ic_term_loan"
+                    android:hint="@string/familyMonthIncomeHint"/>
+            </LinearLayout>
+            <TextView
+                android:id="@+id/changeIncomeActivityFamilyMedianIncomePercentageTextView"
+                style="@style/signUpLabelTextVIew"
+                android:text="@string/medianIncomePercentage"
+                android:layout_marginTop="12dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/changeIncomeActivityCancelButton"
+            style="@style/moreInfoFragmentSmallButton"
+            android:background="@drawable/rectangle_lightgray_color"
+            android:text="@string/cancelLabel" />
+        <Button
+            android:id="@+id/changeIncomeActivityUpdateButton"
+            style="@style/moreInfoFragmentSmallButton"
+            android:background="@drawable/rectangle_basic_color"
+            android:text="@string/updateLabel"/>
+    </LinearLayout>
 
 
 </LinearLayout>
