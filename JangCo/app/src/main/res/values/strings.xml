@@ -106,6 +106,23 @@
     <string name="changeIncomeActivitySecondTierLabel">차상위 계층 (기준 중위 소득 50% 이하)</string>
 
 
+    <!--change special qualification -->
+    <string name="changeSQualificationActivityOfficialLabel">공무원 본인 또는 자녀</string>
+    <string name="changeSQualificationActivityNationalMeritLabel">국가유공자 및 배우자</string>
+    <string name="changeSQualificationActivityIndustrialAccidentLabel">산재근로자 본인, 배우자 또는 자녀</string>
+    <string name="changeSQualificationActivityActiveSoldierLabel">현역군인 및 군무원의 자녀</string>
+    <string name="changeSQualificationActivityLongTermSoldierLabel">장기복무군인 본인 또는 자녀</string>
+    <string name="changeSQualificationActivityPrivateSchoolLabel">사립학교교직원 본인 또는 자녀</string>
+    <string name="changeSQualificationActivityEmploymentInsuranceLabel">고용보험 피보험자</string>
+    <string name="changeSQualificationActivityStudentHeadLabel">학생가장(보육원출신, 조손가정포함)</string>
+    <string name="changeSQualificationActivitySingleParentFamilyLabel">한부모가정</string>
+    <string name="changeSQualificationActivityDisabledLabel">장애인/장애우</string>
+    <string name="changeSQualificationActivityMulticulturalFamilyLabel">다문화가정</string>
+    <string name="changeSQualificationActivityAgricultureForestryFisheriesLabel">농림수산업인 본인 또는 자녀</string>
+    <string name="changeSQualificationActivityNorthKoreaDefectorLabel">북한이탈주민자녀</string>
+    <string name="changeSQualificationActivityHighwayAccidentLabel">고속도로 사고 관련자</string>
+    <string name="changeSQualificationActivitySmallBusinessLabel">중소기업 근로자의 자녀</string>
+
 
     <string name="moreInfoFragmentScholarshipRecord">장학이력</string>
     <string name="moreInfoFragmentMyScholarship">찜</string>
