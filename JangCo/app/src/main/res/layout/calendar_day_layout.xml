@@ -22,6 +22,8 @@
         android:layout_height="wrap_content"
         android:paddingStart="1dp"
         android:paddingEnd="1dp"
+        android:textColor="@color/colorPastelPink"
+        android:lines="1"
         android:textSize="8sp" />
 
     <TextView
@@ -30,6 +32,8 @@
         android:layout_height="wrap_content"
         android:paddingStart="1dp"
         android:paddingEnd="1dp"
+        android:textColor="@color/colorPastelBlue"
+        android:lines="1"
         android:textSize="8sp" />
 
     <TextView

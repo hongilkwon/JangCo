@@ -1,6 +1,7 @@
 package com.example.jangco
 
 import android.annotation.SuppressLint
+import android.os.Handler
 import android.util.Log
 import com.google.android.gms.tasks.Task
 import com.google.android.gms.tasks.Tasks
@@ -11,6 +12,7 @@ import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import java.util.*
+import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 
 class DataBaseHelper(val id: String, val fireStore: FirebaseFirestore = FirebaseFirestore.getInstance()) {
@@ -31,6 +33,8 @@ class DataBaseHelper(val id: String, val fireStore: FirebaseFirestore = Firebase
         }
     }
 
+    val scholarShipDocumentRef = fireStore.collection("ScholarShip")
+
     val userDocumnetRef = fireStore.collection("User").document(id)
     val userInfoCollectionRef =  userDocumnetRef.collection("UserInfo")
 
@@ -39,6 +43,36 @@ class DataBaseHelper(val id: String, val fireStore: FirebaseFirestore = Firebase
     val gradeDocumentRef = userInfoCollectionRef.document("grade")
     val incomeDoucumentRef = userInfoCollectionRef.document("income")
     val sQualificationDoucumentRef  = userInfoCollectionRef.document("squalification")
+
+    fun getMyScholarShipList(myScholarShipMap: HashMap<String, Boolean>): ArrayList<ScholarShip> {
+        val myScholarShipList = ArrayList<ScholarShip>()
+
+        val task = scholarShipDocumentRef.get()
+        Tasks.await(task)
+
+        for(document in task.result!!) {
+            if(myScholarShipMap.containsKey(document.id)) {
+                val scholarShip = document.toObject(ScholarShip::class.java)
+                myScholarShipList.add(scholarShip)
+            }
+        }
+
+        return myScholarShipList
+    }
+
+    /*fun getAllScholarShipList(): ArrayList<ScholarShip> {
+        val myScholarShipList = ArrayList<ScholarShip>()
+
+        val task = scholarShipDocumentRef.get()
+        Tasks.await(task)
+
+        for(document in task.result!!) {
+            val scholarShip = document.toObject(ScholarShip::class.java)
+            myScholarShipList.add(scholarShip)
+        }
+
+        return myScholarShipList
+    }*/
 
 
     // 메인화면 집입시 사용자의 모든 문서와 기본정보(id,nickname...) 로딩

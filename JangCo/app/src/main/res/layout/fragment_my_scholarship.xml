@@ -40,7 +40,7 @@
                 app:layout_constraintEnd_toStartOf="@id/myScholarshipFragmentNextMonthImageView"
                 app:layout_constraintStart_toEndOf="@id/myScholarshipFragmentPreviousMonthImageView"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="April 2018"/>
+                tools:text="April 2018" />
 
             <ImageView
                 android:id="@+id/myScholarshipFragmentNextMonthImageView"
@@ -59,13 +59,18 @@
             android:id="@+id/myScholarshipFragmentCalendarView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cv_scrollMode="paged"
-            app:cv_orientation="horizontal"
-            app:cv_inDateStyle="allMonths"
-            app:cv_outDateStyle="endOfRow"
             app:cv_dayViewResource="@layout/calendar_day_layout"
+            app:cv_inDateStyle="allMonths"
             app:cv_monthHeaderResource="@layout/calendar_month_header"
-            />
+            app:cv_orientation="horizontal"
+            app:cv_outDateStyle="endOfRow"
+            app:cv_scrollMode="paged" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/myScholarshipFragmentRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
     </LinearLayout>
 
 

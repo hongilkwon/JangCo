@@ -35,6 +35,9 @@ class MainActivity : AppCompatActivity() {
     var myScholarshipFragment = MyScholarshipFragment()
     var moreInfoFragment = MoreInfoFragment()
 
+    var myScholarShipMap: HashMap<String, Boolean>? = null
+    var myScholarShipList: ArrayList<ScholarShip>? = null
+
     // 유저의 데이터 객체들.
     var userAllInfo: HashMap<String, Any>? = null
 
@@ -52,7 +55,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         //데이터 로딩 다이얼로그 초기화
         loadingDialog = CustomLoadingDialog(DATA_LOADING_DIALOG_TYPE,this)
-        loadingDialog.window.clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
+        loadingDialog.window?.clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
         //인증 객체 받아오기.
         auth = FirebaseAuth.getInstance()
         currentUser = auth.currentUser!!
@@ -97,6 +100,10 @@ class MainActivity : AppCompatActivity() {
         CoroutineScope(IO).launch {
             userAllInfo = dataBaseHelper.getUserAllInfo()
             updateData()
+
+            myScholarShipMap = userProfile?.bookMarkMap
+            myScholarShipList = dataBaseHelper.getMyScholarShipList(myScholarShipMap!!)
+
             // 코루틴 종료전에 프로그레스 다이얼로그 삭제.
             loadingDialog.dismiss()
         }

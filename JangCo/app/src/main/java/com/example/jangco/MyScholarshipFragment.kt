@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.recyclerview.widget.RecyclerView
 import com.kizitonwose.calendarview.CalendarView
 import com.kizitonwose.calendarview.model.CalendarDay
 import com.kizitonwose.calendarview.model.CalendarMonth
@@ -25,16 +26,22 @@ import org.threeten.bp.YearMonth
 import org.threeten.bp.format.DateTimeFormatter
 import org.threeten.bp.temporal.WeekFields
 import java.util.*
+import kotlin.collections.ArrayList
 
 /**
  * A simple [Fragment] subclass.
  */
 class MyScholarshipFragment : Fragment() {
 
+    private var mainActivity: MainActivity? = null
+
+    private var myScholarShipList: ArrayList<ScholarShip>? = null
+    private var adapter: MyScholarShipRecyclerViewAdapter? = null
     private var selectedDate: LocalDate? = null
     private val monthTitleFormatter = DateTimeFormatter.ofPattern("MMMM")
-    private val dateFormatter = DateTimeFormatter.ofPattern("yy-MM-dd")
+    private val dateFormatter = DateTimeFormatter.ofPattern("yyyyMMdd")
 
+    private lateinit var myScholarshipFragmentRecyclerView: RecyclerView
     private lateinit var myScholarshipFragmentCalendarView: CalendarView
     private lateinit var myScholarshipFragmentNextMonthImageView: ImageView
     private lateinit var myScholarshipFragmentPreviousMonthImageView: ImageView
@@ -46,9 +53,18 @@ class MyScholarshipFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_my_scholarship, container, false)
 
+        mainActivity = activity as MainActivity
+        myScholarShipList = mainActivity?.myScholarShipList
+
+        myScholarshipFragmentRecyclerView = view.findViewById(R.id.myScholarshipFragmentRecyclerView)
         myScholarshipFragmentCalendarView = view.findViewById(R.id.myScholarshipFragmentCalendarView)
         myScholarshipFragmentNextMonthImageView = view.findViewById(R.id.myScholarshipFragmentNextMonthImageView)
         myScholarshipFragmentPreviousMonthImageView = view.findViewById(R.id.myScholarshipFragmentPreviousMonthImageView)
+
+        myScholarshipFragmentRecyclerView.setHasFixedSize(true)
+        adapter = MyScholarShipRecyclerViewAdapter(myScholarShipList!!, context!!)
+        myScholarshipFragmentRecyclerView.adapter = adapter
+
 
         val currentMonth = YearMonth.now()
         val firstMonth = currentMonth.minusMonths(10)
@@ -87,8 +103,8 @@ class MyScholarshipFragment : Fragment() {
             // Called every time we need to reuse a container.
             override fun bind(container: DayViewContainer, day: CalendarDay) {
                 container.day = day
-                /*val schedules = schedules.groupBy { it.date }
-                Log.d("test", "$schedules")*/
+                val scholars = myScholarShipList?.groupBy { it.endDate }
+                //Log.d("test", "$schedules")
                 val calendarDayText = container.calendarDayText
                 val scheduleText = container.scheduleText
                 val scheduleText2 = container.scheduleText2
@@ -119,34 +135,34 @@ class MyScholarshipFragment : Fragment() {
                     calendarDayText.setTextColor(Color.GRAY)
                 }
 
-                /*val schedule = schedules[dateFormatter.format(day.date)]
-                if(schedule != null) {
-                    when(schedule.count()) {
+                val scholar = scholars?.get(dateFormatter.format(day.date))
+                if(scholar != null) {
+                    when(scholar.count()) {
                         1 -> {
-                            scheduleText.text = schedule[0].content
+                            scheduleText.text = scholar[0].name
                             scheduleText2.text = ""
                         }
                         2 -> {
                             scheduleText2.visibility = View.VISIBLE
                             scheduleLabel.visibility = View.GONE
 
-                            scheduleText.text = schedule[0].content
-                            scheduleText2.text = schedule[1].content
+                            scheduleText.text = scholar[0].name
+                            scheduleText2.text = scholar[1].name
                         }
                         else -> {
-                            val num = schedule.count() - 1
+                            val num = scholar.count() - 1
                             scheduleText2.visibility = View.GONE
                             scheduleLabel.visibility = View.VISIBLE
 
-                            scheduleText.text = schedule[0].content
-                            scheduleText2.text = schedule[1].content
+                            scheduleText.text = scholar[0].name
+                            scheduleText2.text = scholar[1].name
                             scheduleLabel.text = "+$num"
                         }
                     }
                 } else {
                     scheduleText.text = ""
                     scheduleText2.text = ""
-                }*/
+                }
             }
         }
 
@@ -186,6 +202,11 @@ class MyScholarshipFragment : Fragment() {
             }
         }
         return view
+    }
+
+    override fun onResume() {
+        super.onResume()
+        adapter?.notifyDataSetChanged()
     }
 
 }

@@ -48,7 +48,8 @@ class ScholarshipFragment : Fragment() {
             .setQuery(query, ScholarShip::class.java)
             .build()
         Log.d("test", mainActivity?.userProfile.toString())
-        adapter = ScholarshipRecyclerViewAdapter(options, context!!, mainActivity?.userProfile!!)
+        adapter = ScholarshipRecyclerViewAdapter(
+            options, context!!, mainActivity?.userProfile!!, mainActivity?.myScholarShipList!!)
         recyclerView?.adapter = adapter
     }
 
