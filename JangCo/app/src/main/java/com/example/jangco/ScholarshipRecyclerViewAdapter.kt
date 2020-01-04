@@ -15,7 +15,11 @@ import com.google.firebase.auth.FirebaseAuth
 import java.text.SimpleDateFormat
 import java.util.*
 
-class ScholarshipRecyclerViewAdapter(option: FirestoreRecyclerOptions<ScholarShip>, val context: Context, val userProfile: User)
+class ScholarshipRecyclerViewAdapter(
+    option: FirestoreRecyclerOptions<ScholarShip>,
+    val context: Context,
+    val userProfile: User,
+    val myScholarShipList: ArrayList<ScholarShip>)
     : FirestoreRecyclerAdapter<ScholarShip, ScholarshipRecyclerViewAdapter.ScholarshipViewHolder>(option) {
 
     private val firebaseAuth = FirebaseAuth.getInstance()
@@ -106,9 +110,11 @@ class ScholarshipRecyclerViewAdapter(option: FirestoreRecyclerOptions<ScholarShi
             scholarCalendarImageView.setOnClickListener {
                 if(userProfile.bookMarkMap?.containsKey(modelID)!!) {
                     userProfile.bookMarkMap?.remove(modelID)
+                    myScholarShipList.remove(model)
                     scholarCalendarImageView.setImageResource(R.drawable.ic_calendar_unchecked)
                 } else {
                     userProfile.bookMarkMap?.put(modelID, true)
+                    myScholarShipList.add(model)
                     scholarCalendarImageView.setImageResource(R.drawable.ic_calendar_checked)
                 }
 
