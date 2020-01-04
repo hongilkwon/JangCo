@@ -25,7 +25,7 @@ data class User(
 
 data class ScholarShip(
 
-    val id: String? = null,
+    var id: String? = null,
     val name: String? = null,
     val type: String? = null,  // 유형 : 장학금, 대출지원, 등.....
     val startDate: String? = null,

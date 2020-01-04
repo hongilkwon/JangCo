@@ -60,7 +60,7 @@ class DataBaseHelper(val id: String, val fireStore: FirebaseFirestore = Firebase
         return myScholarShipList
     }
 
-    /*fun getAllScholarShipList(): ArrayList<ScholarShip> {
+    fun getAllScholarShipList(): ArrayList<ScholarShip> {
         val myScholarShipList = ArrayList<ScholarShip>()
 
         val task = scholarShipDocumentRef.get()
@@ -68,11 +68,12 @@ class DataBaseHelper(val id: String, val fireStore: FirebaseFirestore = Firebase
 
         for(document in task.result!!) {
             val scholarShip = document.toObject(ScholarShip::class.java)
+            scholarShip.id = document.id
             myScholarShipList.add(scholarShip)
         }
 
         return myScholarShipList
-    }*/
+    }
 
 
     // 메인화면 집입시 사용자의 모든 문서와 기본정보(id,nickname...) 로딩

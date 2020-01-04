@@ -43,26 +43,14 @@ class ScholarshipFragment : Fragment() {
     }
 
     private fun setUpRecyclerView() {
-        val query = scholarshipRef.orderBy("endDate", Query.Direction.ASCENDING)
-        val options = FirestoreRecyclerOptions.Builder<ScholarShip>()
-            .setQuery(query, ScholarShip::class.java)
-            .build()
+
         Log.d("test", mainActivity?.userProfile.toString())
         adapter = ScholarshipRecyclerViewAdapter(
-            options, context!!, mainActivity?.userProfile!!, mainActivity?.myScholarShipList!!)
+             context!!, mainActivity?.userProfile!!, mainActivity?.allScholarShipList!!, mainActivity?.myScholarShipList!!)
         recyclerView?.adapter = adapter
     }
 
-    override fun onStart() {
-        super.onStart()
-        adapter?.startListening()
-    }
 
-
-    override fun onStop() {
-        super.onStop()
-        adapter?.stopListening()
-    }
 
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

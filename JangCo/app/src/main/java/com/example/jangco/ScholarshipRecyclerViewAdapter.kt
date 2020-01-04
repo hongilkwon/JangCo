@@ -9,18 +9,17 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.firebase.ui.firestore.FirestoreRecyclerAdapter
-import com.firebase.ui.firestore.FirestoreRecyclerOptions
+
 import com.google.firebase.auth.FirebaseAuth
 import java.text.SimpleDateFormat
 import java.util.*
 
 class ScholarshipRecyclerViewAdapter(
-    option: FirestoreRecyclerOptions<ScholarShip>,
     val context: Context,
     val userProfile: User,
+    val allScholarShip: ArrayList<ScholarShip>,
     val myScholarShipList: ArrayList<ScholarShip>)
-    : FirestoreRecyclerAdapter<ScholarShip, ScholarshipRecyclerViewAdapter.ScholarshipViewHolder>(option) {
+    : RecyclerView.Adapter<ScholarshipRecyclerViewAdapter.ScholarshipViewHolder>() {
 
     private val firebaseAuth = FirebaseAuth.getInstance()
     private lateinit var dataBaseHelper: DataBaseHelper
@@ -34,10 +33,15 @@ class ScholarshipRecyclerViewAdapter(
         return ScholarshipViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ScholarshipViewHolder, position: Int, model: ScholarShip
-    ) {
-        holder.bind(model)
+    override fun getItemCount(): Int {
+       return allScholarShip.size
     }
+
+    override fun onBindViewHolder(holder: ScholarshipViewHolder, position: Int) {
+        holder.bind(position)
+    }
+
+
 
     inner class ScholarshipViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
@@ -52,9 +56,9 @@ class ScholarshipRecyclerViewAdapter(
         private val scholarIncomeTag = view.findViewById<TextView>(R.id.scholarIncomeTag)
         private val scholarCalendarImageView = view.findViewById<ImageView>(R.id.scholarCalendarImageView)
 
-        fun bind(model: ScholarShip) {
+        fun bind(position: Int) {
 
-            Log.d("test", "$model")
+            var model = allScholarShip.get(position)
             // type 별 색상 설정
             when(model.type) {
                 "장학금" -> {
@@ -99,21 +103,16 @@ class ScholarshipRecyclerViewAdapter(
                 scholarIncomeTag.typeface = Typeface.DEFAULT_BOLD
             }
 
-//            val id = auth.currentUser?.email
-//            if(model.likeMap?.get(id) == true)
-//                scholarCalendarImageView.setImageResource(R.drawable.ic_calendar_checked)
-            var modelID = snapshots.getSnapshot(adapterPosition).id
-
-            if(userProfile.bookMarkMap?.containsKey(modelID)!!)
+            if(userProfile.bookMarkMap?.containsKey(model.id)!!)
                 scholarCalendarImageView.setImageResource(R.drawable.ic_calendar_checked)
 
             scholarCalendarImageView.setOnClickListener {
-                if(userProfile.bookMarkMap?.containsKey(modelID)!!) {
-                    userProfile.bookMarkMap?.remove(modelID)
+                if(userProfile.bookMarkMap?.containsKey(model.id)!!) {
+                    userProfile.bookMarkMap?.remove(model.id)
                     myScholarShipList.remove(model)
                     scholarCalendarImageView.setImageResource(R.drawable.ic_calendar_unchecked)
                 } else {
-                    userProfile.bookMarkMap?.put(modelID, true)
+                    userProfile.bookMarkMap?.put(model.id!!, true)
                     myScholarShipList.add(model)
                     scholarCalendarImageView.setImageResource(R.drawable.ic_calendar_checked)
                 }
@@ -121,8 +120,8 @@ class ScholarshipRecyclerViewAdapter(
                 dataBaseHelper.updateBookmark(userProfile.bookMarkMap!!)
             }
 
-            Log.d("test","$model")
-
         }
     }
+
+
 }

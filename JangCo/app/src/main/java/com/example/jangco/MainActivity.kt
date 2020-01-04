@@ -38,6 +38,8 @@ class MainActivity : AppCompatActivity() {
     var myScholarShipMap: HashMap<String, Boolean>? = null
     var myScholarShipList: ArrayList<ScholarShip>? = null
 
+    var allScholarShipList: ArrayList<ScholarShip>? = null
+
     // 유저의 데이터 객체들.
     var userAllInfo: HashMap<String, Any>? = null
 
@@ -104,6 +106,7 @@ class MainActivity : AppCompatActivity() {
             myScholarShipMap = userProfile?.bookMarkMap
             myScholarShipList = dataBaseHelper.getMyScholarShipList(myScholarShipMap!!)
 
+            allScholarShipList = dataBaseHelper.getAllScholarShipList()
             // 코루틴 종료전에 프로그레스 다이얼로그 삭제.
             loadingDialog.dismiss()
         }
