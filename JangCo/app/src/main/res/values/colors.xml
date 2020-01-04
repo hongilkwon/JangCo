@@ -15,5 +15,11 @@
     <color name="colorGray">#9DA3A2</color>
     <color name="colorLightGray">#EEE8E8</color>
     <color name="colorRed">#F1756C</color>
+    <color name="colorPuple">#dda0dd</color>
+    
+    <color name="colorPastelPink">#ff8a80</color>
+    <color name="colorPastelPurple">#B388FF</color>
+    <color name="colorPastelBlue">#82B1FF</color>
+    <color name="colorPastelGreen">#69F0AE</color>
 
 </resources>

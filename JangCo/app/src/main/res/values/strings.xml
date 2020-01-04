@@ -101,9 +101,9 @@
     <string name="moreInfoFragmentMyInfoSqualificationChange">특수정보 입력</string>
 
     <!--change income -->
-    <string name="changeIncomeActivityBasicTierLabel">기초 생활 수급자 (기준 중위 소득 30% 이하)</string>
-    <string name="changeIncomeActivitySecondTierLabel">차상위 계층 (기준 중위 소득 50% 이하)</string>
-    <string name="changeIncomeActivityETCLabel">기타 (기준 중위 소득 50% 초과)</string>
+    <string name="changeIncomeActivityBasicTierLabel">기초생활수급자 (기준 중위소득 30%이하)</string>
+    <string name="changeIncomeActivitySecondTierLabel">차상위계층 (기준 중위소득 50%이하)</string>
+    <string name="changeIncomeActivityETCLabel">기타 (기준 중위소득 50%초과)</string>
     <string name="familyNumberHint">가구수</string>
     <string name="familyMonthIncomeHint">월수입 (단위: 만)</string>
     <string name="medianIncomePercentage">예상 중위 소득 분위:</string>

@@ -19,7 +19,7 @@ data class User(
     var income: Income? = null,
     var sQualification: SQualification? = null,
 */
-    var bookMarkMap: HashMap<String, ScholarShip?>? = HashMap()
+    var bookMarkMap: HashMap<String, Boolean>? = HashMap()
     ): Serializable
 
 
@@ -28,20 +28,23 @@ data class ScholarShip(
     val id: String? = null,
     val name: String? = null,
     val type: String? = null,  // 유형 : 장학금, 대출지원, 등.....
-    val startDate: Date? = null,
-    val endDate: Date? = null,
+    val startDate: String? = null,
+    val endDate: String? = null,
 
     val recruitment : Long? = null, // 선발인원
     val benefit: Long? = null, // 혜택 금액 (최대금액)
     val detailInfoURL: String? = null,
+
+    //태그
+    val tagList: List<Boolean>? = null, // 0: 성적기준, 1: 지역기준, 2: 특수기준, 3: 소득기준
 
     //지원대상 + 신청자격을 합친다. --> 신청자격으로
     var address: Address? = null,
     var school: School? = null,
     var grade: Grade? = null,
     var income: Income? = null,
-    var sQualification: SQualification? = null,
-    var LikeMap: HashMap<String, Boolean>? = null
+    var sQualification: SQualification? = null
+    //var likeMap: HashMap<String, Boolean>? = null
     ): Serializable
 
 

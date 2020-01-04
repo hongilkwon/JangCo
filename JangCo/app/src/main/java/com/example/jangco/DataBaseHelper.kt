@@ -41,11 +41,6 @@ class DataBaseHelper(val id: String, val fireStore: FirebaseFirestore = Firebase
     val sQualificationDoucumentRef  = userInfoCollectionRef.document("squalification")
 
 
-
-
-
-
-
     // 메인화면 집입시 사용자의 모든 문서와 기본정보(id,nickname...) 로딩
     // HashMap<String(data class 이름과 동일.), Object> 형태로
     fun getUserAllInfo(): HashMap<String, Any>{
@@ -123,6 +118,10 @@ class DataBaseHelper(val id: String, val fireStore: FirebaseFirestore = Firebase
     fun upDateUsersQualification(userSQualification: SQualification){
         var task = sQualificationDoucumentRef.set(userSQualification)
         Tasks.await(task)
+    }
+
+    fun updateBookmark(bookMarkMap: HashMap<String, Boolean>){
+        userDocumnetRef.update("bookMarkMap", bookMarkMap)
     }
 
 }
