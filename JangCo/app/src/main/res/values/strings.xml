@@ -110,7 +110,6 @@
     <string name="medianIncomePercentage">예상 중위 소득 분위:</string>
 
 
-
     <!--change special qualification -->
     <string name="changeSQualificationActivityOfficialLabel">공무원 본인 또는 자녀</string>
     <string name="changeSQualificationActivityNationalMeritLabel">국가유공자 및 배우자</string>
@@ -128,7 +127,7 @@
     <string name="changeSQualificationActivityHighwayAccidentLabel">고속도로 사고 관련자</string>
     <string name="changeSQualificationActivitySmallBusinessLabel">중소기업 근로자의 자녀</string>
 
->>>>>>> 3b7769b2415978eab83d02c9a8ef748bce8c94e1
+    >>>>>>> 3b7769b2415978eab83d02c9a8ef748bce8c94e1
 
     <string name="moreInfoFragmentScholarshipRecord">장학이력</string>
     <string name="moreInfoFragmentMyScholarship">찜</string>
