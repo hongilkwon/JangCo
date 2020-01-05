@@ -7,10 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.DocumentSnapshot
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -29,6 +31,8 @@ class ScholarshipRecyclerViewAdapter(
     init {
         scholarShipList = allScholarShip
     }
+
+    private lateinit var listener: OnItemClickListener
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ScholarshipViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -61,6 +65,7 @@ class ScholarshipRecyclerViewAdapter(
 
     inner class ScholarshipViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
+        private val scholarLayout = view.findViewById<LinearLayout>(R.id.scholarLayout)
         private val scholarType = view.findViewById<View>(R.id.scholarType)
         private val scholarName = view.findViewById<TextView>(R.id.scholarName)
         private val scholarBenefit = view.findViewById<TextView>(R.id.scholarBenefit)
@@ -74,7 +79,16 @@ class ScholarshipRecyclerViewAdapter(
 
         fun bind(position: Int) {
 
+<<<<<<< HEAD
             var model = scholarShipList[position]
+=======
+            val model = allScholarShip[position]
+
+            scholarLayout.setOnClickListener{
+                listener.onItemClick(position)
+            }
+
+>>>>>>> 80ae208c75be5d8a435536195460e256406ea9c1
             // type 별 색상 설정
             when(model.type) {
                 "장학금" -> {
@@ -139,5 +153,12 @@ class ScholarshipRecyclerViewAdapter(
         }
     }
 
+    interface OnItemClickListener {
+        fun onItemClick(position: Int)
+    }
+
+    fun setOnItemClickListener(listener: OnItemClickListener) {
+        this.listener = listener
+    }
 
 }

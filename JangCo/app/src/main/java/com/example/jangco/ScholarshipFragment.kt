@@ -1,6 +1,7 @@
 package com.example.jangco
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.*
@@ -19,11 +20,10 @@ import com.google.firebase.firestore.Query
 /**
  * A simple [Fragment] subclass.
  */
-class ScholarshipFragment : Fragment() {
+class ScholarshipFragment : Fragment(), ScholarshipRecyclerViewAdapter.OnItemClickListener {
+
     private var mainActivity: MainActivity? = null
     private var searchView: SearchView? = null
-    private var db: FirebaseFirestore = FirebaseFirestore.getInstance()
-    private var scholarshipRef: CollectionReference = db.collection("ScholarShip")
     private var adapter: ScholarshipRecyclerViewAdapter? = null
     private var recyclerView: RecyclerView? = null
 
@@ -39,21 +39,35 @@ class ScholarshipFragment : Fragment() {
         mainActivity = activity as MainActivity
         recyclerView = view.findViewById(R.id.scholarshipFragmentRecyclerView)
         setUpRecyclerView()
+<<<<<<< HEAD
 //
 //        Log.d("test", mainActivity?.fitScholarShipList!!.toString())
 //        Filter(mainActivity?.userAllInfo!!, mainActivity?.fitScholarShipList!!).compareSQualificationInfo()
 //        Log.d("test", mainActivity?.fitScholarShipList!!.toString())
+=======
+>>>>>>> 80ae208c75be5d8a435536195460e256406ea9c1
 
         return view
     }
 
     private fun setUpRecyclerView() {
-
         Log.d("test", mainActivity?.userProfile.toString())
         adapter = ScholarshipRecyclerViewAdapter(
+<<<<<<< HEAD
             context!!, mainActivity?.userProfile!!, mainActivity?.allScholarShipList!!, mainActivity?.fitScholarShipList!!, mainActivity?.myScholarShipList!!)
+=======
+             context!!, mainActivity?.userProfile!!, mainActivity?.fitScholarShipList!!, mainActivity?.myScholarShipList!!)
+        adapter?.setOnItemClickListener(this)
+>>>>>>> 80ae208c75be5d8a435536195460e256406ea9c1
         recyclerView?.adapter = adapter
     }
+
+    override fun onItemClick(position: Int) {
+        val intent = Intent(context, DetailScholarshipActivity::class.java)
+        intent.putExtra("scholarship", mainActivity?.fitScholarShipList?.get(position))
+        startActivity(intent)
+    }
+
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)

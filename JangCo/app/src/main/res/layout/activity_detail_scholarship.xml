@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".DetailScholarshipActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible">
+
+        <Button
+            android:id="@+id/detailScholarshipActivityUrlButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginStart="26dp"
+            android:layout_marginEnd="22dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/activity_detail_scholarship_url_button"
+            android:padding="14dp"
+            android:text="원문 공고"
+            android:textColor="@color/colorWhite"
+            android:textSize="24sp"
+            android:textStyle="bold"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorWhite"
+                    android:orientation="vertical"
+                    android:paddingStart="26dp"
+                    android:paddingTop="13dp"
+                    android:paddingEnd="22dp"
+                    android:paddingBottom="15dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@drawable/ic_launcher_background"/>
+
+                    <TextView
+                        android:id="@+id/detailScholarshipActivityNameTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="캠코 대학생 취업캠프"
+                        android:textColor="@color/colorDark"
+                        android:textSize="26sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/detailScholarshipActivityGradeTagTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="4dp"
+                            android:textSize="16sp"
+                            android:text="#성적기준" />
+
+                        <TextView
+                            android:id="@+id/detailScholarshipActivityLocalTagTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="4dp"
+                            android:textSize="16sp"
+                            android:text="#지역기준" />
+
+                        <TextView
+                            android:id="@+id/detailScholarshipActivitySpecialTagTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="4dp"
+                            android:textSize="16sp"
+                            android:text="#특수기준" />
+
+                        <TextView
+                            android:id="@+id/detailScholarshipActivityIncomeTagTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:text="#소득기준" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/detailScholarshipActivityDDayTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="10dp"
+                            android:text="D-4"
+                            android:textColor="@color/colorCoralPink"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/detailScholarshipActivityDateTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="10dp"
+                            android:text="2019.12.05 ~ 2020.01.09"
+                            android:textColor="@color/colorBlueyGrey"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/detailScholarshipActivityBenefitTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="8dp"
+                        android:text="최대 100만원"
+                        android:textColor="@color/colorDark"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="@color/colorBlack" />
+
+                    <TextView
+                        android:id="@+id/detailScholarshipActivityDescriptionTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:paddingBottom="100dp"
+                        android:text="19 F/W COLLECTION\nWHEN WE LOSE OUR UNICORN\n유니콘을 떠나보내는 이들에게 전하는 위로\n붙잡고 있는 것을 놓아주며 실패할 수 도\n있는 것이 성숙한 어른이 되는 것이다."
+                        android:textColor="@color/colorDark"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+    </FrameLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

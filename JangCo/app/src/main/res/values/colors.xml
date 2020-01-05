@@ -23,4 +23,15 @@
     <color name="colorPastelBlue">#82B1FF</color>
     <color name="colorPastelGreen">#69F0AE</color>
 
+    <color name="colorDark">#141428</color>
+    <color name="colorBlueGrey">#ababc4</color>
+    <color name="colorDarkNavyBlue">#5c00000a</color>
+    <color name="colorDarkSkyBlue">#4a90e2</color>
+    <color name="colorCoralPink">#ff586c</color>
+    <color name="colorBlueyGrey">#ababc4</color>
+    <color name="colorPaleGreyTwo">#ececf5</color>
+    <color name="colorPaleGrey">#f6f6fa</color>
+    <color name="colorCoolGrey">#a3a3b5</color>
+    <color name="colorDark16">#28181828</color>
+
 </resources>
