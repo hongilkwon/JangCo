@@ -34,7 +34,7 @@ data class ScholarShip(
     val recruitment : Long? = null, // 선발인원
     val benefit: Long? = null, // 혜택 금액 (최대금액)
     val detailInfoURL: String? = null,
-    val description: String? = "",
+    val description: ArrayList<String>? = null,
 
     //태그
     val tagList: List<Boolean>? = null, // 0: 성적기준, 1: 지역기준, 2: 특수기준, 3: 소득기준

@@ -26,6 +26,7 @@ class ScholarshipFragment : Fragment(), ScholarshipRecyclerViewAdapter.OnItemCli
     private var searchView: SearchView? = null
     private var adapter: ScholarshipRecyclerViewAdapter? = null
     private var recyclerView: RecyclerView? = null
+    private var filter = 1
 
 
     override fun onCreateView(
@@ -39,13 +40,7 @@ class ScholarshipFragment : Fragment(), ScholarshipRecyclerViewAdapter.OnItemCli
         mainActivity = activity as MainActivity
         recyclerView = view.findViewById(R.id.scholarshipFragmentRecyclerView)
         setUpRecyclerView()
-<<<<<<< HEAD
-//
-//        Log.d("test", mainActivity?.fitScholarShipList!!.toString())
-//        Filter(mainActivity?.userAllInfo!!, mainActivity?.fitScholarShipList!!).compareSQualificationInfo()
-//        Log.d("test", mainActivity?.fitScholarShipList!!.toString())
-=======
->>>>>>> 80ae208c75be5d8a435536195460e256406ea9c1
+
 
         return view
     }
@@ -53,18 +48,26 @@ class ScholarshipFragment : Fragment(), ScholarshipRecyclerViewAdapter.OnItemCli
     private fun setUpRecyclerView() {
         Log.d("test", mainActivity?.userProfile.toString())
         adapter = ScholarshipRecyclerViewAdapter(
-<<<<<<< HEAD
-            context!!, mainActivity?.userProfile!!, mainActivity?.allScholarShipList!!, mainActivity?.fitScholarShipList!!, mainActivity?.myScholarShipList!!)
-=======
-             context!!, mainActivity?.userProfile!!, mainActivity?.fitScholarShipList!!, mainActivity?.myScholarShipList!!)
+
+            context!!,
+            mainActivity?.userProfile!!,
+            mainActivity?.allScholarShipList!!,
+            mainActivity?.fitScholarShipList!!,
+            mainActivity?.myScholarShipList!!
+        )
+
         adapter?.setOnItemClickListener(this)
->>>>>>> 80ae208c75be5d8a435536195460e256406ea9c1
         recyclerView?.adapter = adapter
     }
 
     override fun onItemClick(position: Int) {
+        Log.d("test", position.toString())
         val intent = Intent(context, DetailScholarshipActivity::class.java)
-        intent.putExtra("scholarship", mainActivity?.fitScholarShipList?.get(position))
+        if(filter == 1)
+            intent.putExtra("scholarship", mainActivity?.allScholarShipList?.get(position))
+        else
+            intent.putExtra("scholarship", mainActivity?.fitScholarShipList?.get(position))
+
         startActivity(intent)
     }
 
@@ -77,24 +80,28 @@ class ScholarshipFragment : Fragment(), ScholarshipRecyclerViewAdapter.OnItemCli
         searchView = searchMenu.actionView as SearchView
         searchView!!.setQueryHint("검색어 입력")
 
-        val searchAutoComplete = searchView!!.findViewById(androidx.appcompat.R.id.search_src_text) as SearchAutoComplete
+        val searchAutoComplete =
+            searchView!!.findViewById(androidx.appcompat.R.id.search_src_text) as SearchAutoComplete
         searchAutoComplete.setHintTextColor(context!!.getColor(R.color.colorBlack))
         searchAutoComplete.setTextColor(context!!.getColor(R.color.colorBlack))
 
-        val closeIcon = searchView!!.findViewById(androidx.appcompat.R.id.search_close_btn) as ImageView
+        val closeIcon =
+            searchView!!.findViewById(androidx.appcompat.R.id.search_close_btn) as ImageView
         closeIcon.setImageDrawable(context!!.getDrawable(R.drawable.ic_close_black_24dp))
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
-        when(item.itemId){
-            R.id.all ->{
-                adapter?.filter(1)
+        when (item.itemId) {
+            R.id.all -> {
+                filter = 1
+                adapter?.filter(filter)
                 adapter?.notifyDataSetChanged()
             }
             R.id.fit -> {
                 //Filter(mainActivity?.userAllInfo!!, mainActivity?.fitScholarShipList!!).compareSQualificationInfo()
-                adapter?.filter(2)
+                filter = 2
+                adapter?.filter(filter)
                 adapter?.notifyDataSetChanged()
             }
 

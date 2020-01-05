@@ -26,11 +26,7 @@ class ScholarshipRecyclerViewAdapter(
 
     private val firebaseAuth = FirebaseAuth.getInstance()
     private lateinit var dataBaseHelper: DataBaseHelper
-    private var scholarShipList: ArrayList<ScholarShip>
-
-    init {
-        scholarShipList = allScholarShip
-    }
+    private var scholarShipList: ArrayList<ScholarShip> = allScholarShip
 
     private lateinit var listener: OnItemClickListener
 
@@ -78,17 +74,14 @@ class ScholarshipRecyclerViewAdapter(
         private val scholarCalendarImageView = view.findViewById<ImageView>(R.id.scholarCalendarImageView)
 
         fun bind(position: Int) {
-
-<<<<<<< HEAD
+            Log.d("test", position.toString())
             var model = scholarShipList[position]
-=======
-            val model = allScholarShip[position]
 
             scholarLayout.setOnClickListener{
                 listener.onItemClick(position)
             }
 
->>>>>>> 80ae208c75be5d8a435536195460e256406ea9c1
+
             // type 별 색상 설정
             when(model.type) {
                 "장학금" -> {

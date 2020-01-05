@@ -56,6 +56,11 @@ class DetailScholarshipActivity : AppCompatActivity() {
             String.format("%s ~ %s", sdf.format(startDate), sdf.format(endDate))
 
         detailScholarshipActivityBenefitTextView.text = String.format("최대 %d만원", scholarship?.benefit)
-        detailScholarshipActivityDescriptionTextView.text = scholarship?.description
+
+        var description = ""
+        for(d in scholarship?.description!!) {
+            description += d + "\n"
+        }
+        detailScholarshipActivityDescriptionTextView.text = description
     }
 }
