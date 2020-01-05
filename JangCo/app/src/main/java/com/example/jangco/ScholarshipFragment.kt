@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.*
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.SearchView.SearchAutoComplete
 import androidx.core.content.ContextCompat.getDrawable
@@ -38,10 +39,10 @@ class ScholarshipFragment : Fragment() {
         mainActivity = activity as MainActivity
         recyclerView = view.findViewById(R.id.scholarshipFragmentRecyclerView)
         setUpRecyclerView()
-
-        Log.d("test", mainActivity?.fitScholarShipList!!.toString())
-        Filter(mainActivity?.userAllInfo!!, mainActivity?.fitScholarShipList!!).compareSQualificationInfo()
-        Log.d("test", mainActivity?.fitScholarShipList!!.toString())
+//
+//        Log.d("test", mainActivity?.fitScholarShipList!!.toString())
+//        Filter(mainActivity?.userAllInfo!!, mainActivity?.fitScholarShipList!!).compareSQualificationInfo()
+//        Log.d("test", mainActivity?.fitScholarShipList!!.toString())
 
         return view
     }
@@ -50,7 +51,7 @@ class ScholarshipFragment : Fragment() {
 
         Log.d("test", mainActivity?.userProfile.toString())
         adapter = ScholarshipRecyclerViewAdapter(
-             context!!, mainActivity?.userProfile!!, mainActivity?.fitScholarShipList!!, mainActivity?.myScholarShipList!!)
+            context!!, mainActivity?.userProfile!!, mainActivity?.allScholarShipList!!, mainActivity?.fitScholarShipList!!, mainActivity?.myScholarShipList!!)
         recyclerView?.adapter = adapter
     }
 
@@ -68,6 +69,23 @@ class ScholarshipFragment : Fragment() {
 
         val closeIcon = searchView!!.findViewById(androidx.appcompat.R.id.search_close_btn) as ImageView
         closeIcon.setImageDrawable(context!!.getDrawable(R.drawable.ic_close_black_24dp))
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        when(item.itemId){
+            R.id.all ->{
+                adapter?.filter(1)
+                adapter?.notifyDataSetChanged()
+            }
+            R.id.fit -> {
+                //Filter(mainActivity?.userAllInfo!!, mainActivity?.fitScholarShipList!!).compareSQualificationInfo()
+                adapter?.filter(2)
+                adapter?.notifyDataSetChanged()
+            }
+
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 }

@@ -108,6 +108,7 @@ class MainActivity : AppCompatActivity() {
 
             allScholarShipList = dataBaseHelper.getAllScholarShipList()
             fitScholarShipList?.addAll(allScholarShipList!!)
+            Filter(userAllInfo!!, fitScholarShipList!!).compareSQualificationInfo()
             // 코루틴 종료전에 프로그레스 다이얼로그 삭제.
             loadingDialog.dismiss()
         }

@@ -70,7 +70,7 @@
     <string name="moreInfoFragmentToolbarLabel">더 보기</string>
 
     <!--moreInfo -->
-    <string name="moreInfoFragmentBasicComment">님, 식사는 하셨나요?</string>
+    <string name="moreInfoFragmentBasicComment">님, 내 정보를 수정해 보세요</string>
     <!--myInfo -->
     <string name="moreInfoFragmentMyInfo">내정보</string>
     <string name="moreInfoFragmentMyInfoNickName">nickName</string>

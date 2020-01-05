@@ -18,11 +18,17 @@ class ScholarshipRecyclerViewAdapter(
     val context: Context,
     val userProfile: User,
     val allScholarShip: ArrayList<ScholarShip>,
+    val fitScholarShip: ArrayList<ScholarShip>,
     val myScholarShipList: ArrayList<ScholarShip>)
     : RecyclerView.Adapter<ScholarshipRecyclerViewAdapter.ScholarshipViewHolder>() {
 
     private val firebaseAuth = FirebaseAuth.getInstance()
     private lateinit var dataBaseHelper: DataBaseHelper
+    private var scholarShipList: ArrayList<ScholarShip>
+
+    init {
+        scholarShipList = allScholarShip
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ScholarshipViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -34,14 +40,24 @@ class ScholarshipRecyclerViewAdapter(
     }
 
     override fun getItemCount(): Int {
-       return allScholarShip.size
+       return scholarShipList.size
     }
 
     override fun onBindViewHolder(holder: ScholarshipViewHolder, position: Int) {
         holder.bind(position)
     }
 
+    fun filter(type: Int){
+        when(type) {
+            1 -> {
+                scholarShipList = allScholarShip
+            }
+            2 -> {
+                scholarShipList = fitScholarShip
+            }
+        }
 
+    }
 
     inner class ScholarshipViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
@@ -58,7 +74,7 @@ class ScholarshipRecyclerViewAdapter(
 
         fun bind(position: Int) {
 
-            var model = allScholarShip.get(position)
+            var model = scholarShipList[position]
             // type 별 색상 설정
             when(model.type) {
                 "장학금" -> {

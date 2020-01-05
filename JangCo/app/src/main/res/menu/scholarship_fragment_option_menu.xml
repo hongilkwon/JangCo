@@ -12,5 +12,15 @@
         android:id="@+id/scholarshipFragmentToolbarFilterMenu"
         android:icon="@drawable/ic_tune_black_24dp"
         android:title="filter"
-        app:showAsAction="always" />
+        app:showAsAction="always">
+        <menu>
+            <item
+                android:id="@+id/fit"
+                android:title="맞춤 장학금" />
+            <item
+                android:id="@+id/all"
+                android:title="전체 장학금" />
+        </menu>
+
+    </item>
 </menu>
